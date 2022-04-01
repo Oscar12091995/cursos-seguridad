@@ -1,0 +1,43 @@
+.scrolls{
+    overflow: -moz-scrollbars-vertical; 
+    overflow-y: scroll;
+    height: screen;
+}
+.accordion-content {
+    transition: max-height 0.3s ease-out, padding 0.3s ease;
+}
+
+.embed-responsive{
+    position: relative;
+    overflow: hidden;
+    padding-top: 56.25%;
+
+}
+
+.embed-responsive iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.375rem/* 6px */;
+}
+
+#curp {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}
+#curp.correcto {
+    background-color: green;
+}
+
+
+#rfc {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}
+#rfc.ok {
+    background-color: green;
+}
