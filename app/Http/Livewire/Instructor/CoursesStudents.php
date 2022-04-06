@@ -6,6 +6,9 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Models\Course;
+use App\Models\User;
+use Barryvdh\DomPDF\Facade as PDF;
+
 
 class CoursesStudents extends Component
 {
@@ -29,4 +32,16 @@ class CoursesStudents extends Component
         ->paginate(8);
         return view('livewire.instructor.courses-students', compact('students'))->layout('layouts.instructor', ['course' => $this->course]);
     }
+
+    public function generatePDF($course, $student)
+    {   
+        
+        $student = User::find($student);
+        $course = Course::find($course);       
+        $pdf = PDF::loadView('instructor.courses.generate_pdf', compact('student', 'course'))->setPaper('a4');
+        return $pdf->stream('users.pdf');
+        /* return $course; */
+    }
+
+   
 }

@@ -11,7 +11,7 @@
 @endsection
 
 @section('content_header')
-<a href="{{route('admin.levels.create')}}" class="btn btn-outline-primary btn-md float-right"><i class="fas fa-plus"></i> Nuevo Nivel</a>
+{{-- <a href="{{route('admin.levels.create')}}" class="btn btn-outline-primary btn-md float-right"><i class="fas fa-plus"></i> Nuevo Nivel</a> --}}
 <button type="button" class="btn btn-outline-primary btn-md float-right" data-toggle="modal" data-target="#exampleModal">
     <i class="fas fa-plus"></i>
   Añadir Nivel
@@ -45,8 +45,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-danger col-md-5" data-dismiss="modal">Cancelar</button>
-                {!! Form::submit('Crear Nivel', ['class' => 'btn btn-outline-success float-right col-sm-6']) !!}
+                <button type="button" class="btn btn-danger col-md-5" data-dismiss="modal">Cancelar</button>
+                {!! Form::submit('Crear Nivel', ['class' => 'btn btn-success float-right col-sm-6']) !!}
                 {!! Form::close() !!}
                 
               
@@ -100,7 +100,7 @@
                         <td>{{$level->name}}</td>
                         <td width="5px"><a href="{{route('admin.levels.edit', $level)}}" class="btn btn-outline-primary"> <i class="fas fa-edit text-base"></i></a></td>
                         <td width="5px">
-                            <form action="{{route('admin.levels.destroy', $level)}}" method="POST" class="form-eliminar">
+                            <form action="{{route('admin.levels.destroy', $level)}}" method="POST" >
                                 @method('delete')
                                 @csrf
                             
@@ -145,7 +145,7 @@
         }
      });
     </script>
-     <script>
+   {{--   <script>
         $('.guardar').submit(function(e){
            
            const Toast = Swal.mixin({
@@ -196,5 +196,5 @@
         });
 
         
-    </script>
+    </script> --}}
 @stop

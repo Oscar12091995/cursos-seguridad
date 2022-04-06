@@ -61,7 +61,7 @@
                                 <tbody class="bg-white divide-y divide-gray-200 text-gray-600 text-sm font-light">
                                     @foreach($quiz->questions as $question )
                                     <tr class="border-b border-gray-200 bg-gray-50 hover:bg-gray-100">
-                                        <td class="border-r whitespace-nowrap" style="width:90px">{{ $question->question }}</td>
+                                        <td class="border-r whitespace-nowrap" style="width:90px">{{ Str::limit($question->question, 45) }}</td>
                                         <td class="border-r px-1">{{ $question->answer1 }}</td>
                                         <td class="border-r px-1">{{ $question->answer2 }}</td>
                                         <td class="border-r px-1">{{ $question->answer3 }}</td>

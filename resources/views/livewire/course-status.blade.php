@@ -134,13 +134,15 @@
                     <div class="ml-1 text-blue-600">Exámenes del curso</div>
                         <div class="text-black rounded-lg ">
                             @foreach ($quizzes as $quiz)
-                            <a href="{{ route('quiz.detail', $quiz->slug) }}" target="_blank" class="hover:bg-gray-200 font-bold text-base inline-block pb-4 pt-2 px-4" style="border-radius:20px" aria-current="true">  
-                                <div class="d-flex w-100 justify-content-between">
-                                    <h5 class="mb-1"> {{Str::limit($quiz->title, 30)}}</h5>    
-                                    <small>{{$quiz->finished_at ? $quiz->finished_at->diffForHumans().' bitiyor' : null }}</small>
-                                </div>
-                                <small>{{$quiz->questions_count.' Preguntas'}}</small>
-                                </a>
+                   
+                                    <a href="{{ route('quiz.detail', $quiz->slug) }}" target="_blank" class="hover:bg-gray-200 font-bold text-base inline-block pb-4 pt-2 px-4" style="border-radius:20px" aria-current="true">  
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h5 class="mb-1"> {{Str::limit($quiz->title, 30)}}</h5>    
+                                            <small>{{$quiz->finished_at ? $quiz->finished_at->diffForHumans().' bitiyor' : null }}</small>
+                                        </div>
+                                        <small>{{$quiz->questions_count.' Preguntas'}}</small>
+                                    </a>
+                               
                             @endforeach
                         </div>
                 </ul>

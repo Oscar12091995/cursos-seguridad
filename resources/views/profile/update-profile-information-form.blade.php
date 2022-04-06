@@ -74,7 +74,7 @@
 
         {{-- rfc --}}
         <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="rfc" value="{{ __('RFC') }}" />
+            <x-jet-label for="rfc" value="{{ __('RFC de la empresa') }}" />
             <x-jet-input id="rfc_input" type="text" class="mt-1 block w-full" oninput="validarInput2(this)" wire:model.defer="state.rfc" autocomplete="rfc" />
             <x-jet-input-error for="rfc" class="mt-2" />
             <pre id="rfc"></pre>
@@ -82,7 +82,7 @@
 
         {{-- curp --}}
         <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="curp" value="{{ __('CURP') }}" />
+            <x-jet-label for="curp" value="{{ __('CURP personal') }}" />
             <x-jet-input id="curp_input" type="text" oninput="validarInput(this)" class="mt-1 block w-full" wire:model.defer="state.curp" autocomplete="curp" />
             <x-jet-input-error for="curp" class="mt-2" />
             <pre id="curp"></pre>

@@ -4,7 +4,7 @@
 
 @section('content_header')
     
-    <h1> <a href="{{route('admin.prices.index')}}"><i class="fas fa-angle-left cursor-pointer"></i></a> Agregar nueva Empresa:</h1>
+    <h1> <a href="{{route('admin.prices.index')}}"><i class="fas fa-angle-left cursor-pointer"></i></a> Agregar nuevo precio</h1>
 @stop
 
 @section('content')

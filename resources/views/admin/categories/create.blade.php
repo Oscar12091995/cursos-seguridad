@@ -19,7 +19,7 @@
             @enderror
         </div>
 
-        {!! Form::submit('Crear categoria', ['class' => 'btn btn-success float-right col-sm-3']) !!}
+        {!! Form::submit('Crear categoria', ['class' => 'btn btn-success float-left col-sm-3']) !!}
         {!! Form::close() !!}
         </div>
     </div>

@@ -103,6 +103,10 @@ class Course extends Model
     public function audience(){
         return $this->hasMany('App\Models\Audience');
     }
+    
+    public function observation(){
+        return $this->hasOne('App\Models\Observation');
+    }
 
     public function image(){
         return $this->morphOne('App\Models\Image', 'imageable');

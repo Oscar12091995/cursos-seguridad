@@ -28,7 +28,7 @@
             @enderror
         </div>
 
-        {!! Form::submit('Actulizar Nivel', ['class' => 'btn btn-outline-primary float-right col-sm-6']) !!}
+        {!! Form::submit('Actulizar Nivel', ['class' => 'btn btn-primary float-left col-sm-4']) !!}
         {!! Form::close() !!}
         </div>
     </div>

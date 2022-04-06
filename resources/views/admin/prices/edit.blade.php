@@ -3,7 +3,7 @@
 @section('title', 'Administración')
 
 @section('content_header')
-    <h1><a href="{{route('admin.prices.index')}}"><i class="fas fa-angle-left cursor-pointer"></i></a> Editar Empresa</h1>
+    <h1><a href="{{route('admin.prices.index')}}"><i class="fas fa-angle-left cursor-pointer"></i></a> Editar Precio</h1>
 @stop
 
 @section('content')
@@ -27,7 +27,7 @@
                 @enderror
             </div>
 
-        {!! Form::submit('Actulizar Precio', ['class' => 'btn btn-primary float-right col-sm-6']) !!}
+        {!! Form::submit('Actulizar Precio', ['class' => 'btn btn-primary float-left col-sm-4']) !!}
         {!! Form::close() !!}
         </div>
     </div>

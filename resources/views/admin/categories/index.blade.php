@@ -96,7 +96,7 @@
                             <td>{{$category->name}}</td>
                             <td><a href="{{route('admin.categories.edit', $category)}}" class="btn btn-outline-primary"> <i class="fas fa-edit text-base"></i></a>  </td>
                             <td>
-                                <form action="{{route('admin.categories.destroy', $category)}}" method="POST" class="form-eliminar">
+                                <form action="{{route('admin.categories.destroy', $category)}}" method="POST" >
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-outline-danger w-full"><i class="fas fa-trash text-base"></i> </button>
@@ -141,57 +141,7 @@
         }
      });
     </script>
-    <script>
-     $('.guardar').submit(function(e){
-        
-                const Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
-        })
-
-        Toast.fire({
-        icon: 'success',
-        title: 'Categoría creada con exito!'
-        })
-        this.submit();
-            });
-
-    </script>
-          
-    <script>
-
-        $('.form-eliminar').submit(function(e){
-            e.preventDefault();
-            Swal.fire({
-            title: '¿Estas Seguro?',
-            text: "No podras revertir esto!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#203864',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Aceptar'
-            }).then((result) => {
-            if (result.isConfirmed) {
-            
-                Swal.fire(
-                'Eliminado!',
-                'El registro se ha eliminado con exito!',
-                'error'
-                ),
-                this.submit();
-            }
-            })
-        });   
-
-        
-    </script>
+  
        
 @stop
 

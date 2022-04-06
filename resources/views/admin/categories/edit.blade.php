@@ -56,7 +56,7 @@
             @enderror
         </div>
 
-        {!! Form::submit('Actulizar categoria', ['class' => 'btn btn-outline-primary float-right col-sm-6']) !!}
+        {!! Form::submit('Actulizar categoria', ['class' => 'btn btn-primary float-left col-sm-4']) !!}
         {!! Form::close() !!}
         </div>
     </div>

@@ -9,6 +9,9 @@ use App\Models\Course;
 use App\Models\Level;
 use App\Models\Price;
 use App\Models\Quize;
+use App\Models\User;
+
+
 
 use Illuminate\Support\Facades\Storage;
 
@@ -149,6 +152,7 @@ class CourseController extends Controller
             'file' => 'image',
         ]);
         $course->update($request->all());
+        $course->students()->detach(User::all());
 
         if ($request->file('file')) {
             $url = Storage::put('courses', $request->file('file'));
@@ -212,4 +216,9 @@ class CourseController extends Controller
 
         return view('instructor.exam.create');
     }
+
+    
+    
+   
+
 }
