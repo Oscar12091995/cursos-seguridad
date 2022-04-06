@@ -57,9 +57,9 @@
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <figure class="order-2 sm:order-1">
         @isset($course->image)
-        <img class="w-full h-64 bg-cover bg-center shadow-md" id="picture" src="{{url('storage/'.$course->image->url)}}" alt="">
+        <img class="w-full h-64 bg-cover bg-center shadow-md" id="picture" src="{{url('storage/'.$course->image->url)}}" alt="{{$course->title}}">
         @else 
-        <img class="w-full h-64 object-center object-cover shadow-md" id="picture" src="https://images.pexels.com/photos/260367/pexels-photo-260367.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+        <img class="w-full h-64 object-center object-cover shadow-md" id="picture" src="https://images.pexels.com/photos/260367/pexels-photo-260367.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="bomberos">
         @endisset
         {{-- src="{{Storage::url($course->image->url)}}"--}}
     </figure>

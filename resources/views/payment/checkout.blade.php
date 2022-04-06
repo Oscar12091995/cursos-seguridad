@@ -8,7 +8,7 @@
                         <div class="w-full mx-auto text-gray-800 font-light mb-6 border-b border-gray-200 pb-6">
                             <div class="w-full flex items-center">
                                 <div class="overflow-hidden rounded-lg w-16 h-16 bg-gray-50 border border-gray-200">
-                                    <img src="{{url('storage/'.$course->image->url)}}" alt="">
+                                    <img src="{{url('storage/'.$course->image->url)}}" alt="{{$course->title}}">
                                 </div>
                                 <div class="flex-grow pl-3">
                                     <h6 class="font-semibold uppercase text-gray-600">{{$course->title}}</h6>
@@ -34,7 +34,6 @@
                     <div class="px-3 md:w-5/12">
                         <div class="justify-center">
                             <a class="text-center block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-2 font-semibold cursor-pointer" href="{{route('payment.pay', $course)}}"><i class="mdi mdi-lock-outline mr-1"></i> Pagar ahora</a>
-                            {{-- <div class="" id="paypal-button-container"></div> --}}
                         </div>
                     </div>
                 </div>
@@ -47,64 +46,6 @@
         </div>
     </div>
 
-    <script src="https://www.paypal.com/sdk/js?client-id={{config('services.paypal.client_id')}}"></script>
-    <script>
-
-        paypal.Buttons({
   
-  
-          // Sets up the transaction when a payment button is clicked
-  
-          createOrder: function(data, actions) {
-  
-            return actions.order.create({
-  
-              purchase_units: [{
-  
-                amount: {
-                  value: '{{$course->price->value}}' // Can reference variables or functions. Example: `value: document.getElementById('...').value`
-                 
-                }
-  
-              }]
-  
-            });
-  
-          },
-  
-  
-          // Finalize the transaction after payer approval
-  
-          onApprove: function(data, actions) {
-  
-            return actions.order.capture().then(function(orderData) {
-  
-              // Successful capture! For dev/demo purposes:
-  
-                  console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-  
-                  var transaction = orderData.purchase_units[0].payments.captures[0];
-  
-                  alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
-  
-  
-              // When ready to go live, remove the alert and show a success message within this page. For example:
-  
-              // var element = document.getElementById('paypal-button-container');
-  
-              // element.innerHTML = '';
-  
-              // element.innerHTML = '<h3>Thank you for your payment!</h3>';
-  
-              // Or go to another URL:  actions.redirect('thank_you.html');
-  
-            });
-  
-          }
-  
-        }).render('#paypal-button-container');
-  
-  
-      </script>
     
 </x-app-layout>

@@ -1,6 +1,6 @@
 
 
-<nav class="relative px-4 py-4 flex justify-between items-center bg-white shadow-lg " style="z-index: 900;">
+<nav class="relative px-4 py-4 flex justify-between items-center bg-white shadow-lg "  style="z-index: 900;">
     <a class="text-3xl font-bold leading-none sm:ml-2 lg:ml-32" href="{{ route('home') }}">
         <img class="rounded-xl h-16 w-full object-cover" width="100%" height="100%" src="{{asset('images/inicio/forklift.png')}}" alt="Seguridad Montacargas">
     </a>

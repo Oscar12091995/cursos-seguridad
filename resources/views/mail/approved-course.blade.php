@@ -7,7 +7,7 @@
         <title>Document</title>
     </head>
     <body>
-      <h1>Este es un correo de prueba</h1>
-        <p>El curso <strong>{{$course->title}}</strong> se ha aprobado</p>
+      <h1>Acpetación de curso!</h1>
+        <p>El curso <strong>{{$course->title}}</strong> se ha aprobado!</p>
     </body>
     </html>

@@ -30,28 +30,22 @@
             <div class="flex justify-between mt-4">
                 <div class="flex items-center cursor-pointer" wire:click="completed">
                     @if ($current->completed)
-                    <i class="fas fa-toggle-on text-blue-600 text-xl"></i>
+                        <i class="fas fa-toggle-on text-blue-600 text-xl"></i>
                     @else
-                    <i class="fas fa-toggle-off text-gray-600 text-xl"></i>
+                        <i class="fas fa-toggle-off text-gray-600 text-xl"></i>
                     @endif
-                    <p class="md:text-xl sm:text-base ml-2 text-red-600">Marcar unidad como terminada</p>
+                        <p class="md:text-xl sm:text-base ml-2 text-red-600">Marcar unidad como terminada</p>
                 </div>
-               @if ($current->resource)
-               <div wire:click="download">
-                <div class="each flex hover:shadow-lg select-none p-10 rounded-md border-gray-300 border mb-3 hover:border-gray-500 cursor-pointer px-2 py-2">
-                  <div class="left">
-                    <div class="header text-blue-600 font-semibold text-xl">Descargar <i class="fas fa-download text-base"></i></div>
-                    <div class="desc text-gray-600 text-sm">Aquí puedes encontrar recursos que puedas necesitar!</div>
-                  </div>
-                </div>
-            </div>
-               {{-- <div class="flex items-center text-gray-500 cursor-pointer hover:text-blue-500" wire:click="download">
-                   
-                    <i class="fas fa-download text-base"></i>
-                    
-                    <p class="text-sm ml-2">Descargar Recurso</p>
-                </div> --}}
-               @endif
+                @if ($current->resource)
+                    <div wire:click="download">
+                        <div class="each flex hover:shadow-lg select-none p-10 rounded-md border-gray-300 border mb-3 hover:border-gray-500 cursor-pointer px-2 py-2">
+                            <div class="left">
+                                <div class="header text-blue-600 font-semibold text-xl">Descargar <i class="fas fa-download text-base"></i></div>
+                                <div class="desc text-gray-600 text-sm">Aquí puedes encontrar recursos que puedas necesitar!</div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
             </div>
 
             <div class=" mt-2 font-bold">
@@ -81,12 +75,7 @@
                     </div>
                     
                 </div>
-                <div class="text-center mt-12">
-                {{--     @if($this->advance == 100)
-                    <a href="{{route('courses.imprimirpdf', $course->id)}}" target="_blank" class="btn btn-outline-danger">Imprimir Certificado</a>
-                    @endif --}}
-                    
-                </div>
+
                 {{-- barra de progreso de curso --}}
                 <div class="relative pt-1 mt-4">
                     <p class="text-gray-700 text-base">Progreso del curso:</p>

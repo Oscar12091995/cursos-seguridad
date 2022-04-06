@@ -15,7 +15,7 @@
             </form>
            @else
            <header class="flex justify-between items-center">
-            <h1 x-on:click="open = !open" class="cursor-pointer"><strong>Sección:</strong> {{$item->name}}</h1>
+            <h2 x-on:click="open = !open" class="cursor-pointer"><strong>Sección:</strong> {{$item->name}}</h2>
             <div>
                 <i class="fas fa-edit cursor-pointer text-blue-500 text-2xl" title="Editar" wire:click="edit({{$item}})"></i>
                 <i class="fas fa-trash cursor-pointer text-red-500 text-2xl" title="Eliminar" wire:click="destroy({{$item}})"></i>
@@ -36,7 +36,7 @@
         </a>
         <article class="bg-white shadow-lg rounded overflow-hidden" x-show="open">
             <div class="px-6 py-4 bg-white">
-                <h1 class="text-xl font-bold mb-4">Agregar tema de sección</h1>
+                <h2 class="text-xl font-bold mb-4">Agregar tema de sección</h2>
                 <div class="mb-4">
                     <input class="form-control w-full" wire:model="name" type="text" autofocus="autofocus" placeholder="Escriba el nombre de la seccion" >
                     @error('name')

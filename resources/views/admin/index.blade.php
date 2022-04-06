@@ -56,12 +56,12 @@
     </div>
     
   </div>
-  <canvas id="myChart" width="400" height="100"></canvas>
+  {{-- <canvas id="myChart" width="400" height="100"></canvas> --}}
 @stop
 
 @section('js')
 
-<script>
+{{-- <script>
     var cursados=[];
     var valor =[];
     const ctx = document.getElementById('myChart').getContext('2d');
@@ -99,6 +99,6 @@
             }
         }
     });
-    </script>
+</script> --}}
 
 @stop

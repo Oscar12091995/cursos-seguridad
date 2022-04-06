@@ -19,9 +19,9 @@
                                     <option value="{{$platform->id}}">{{$platform->name}}</option>
                                 @endforeach
                             </select>
-                           {{--  @error('lesson.platform')
-                            <span class="text-red-500 text-sm">{{$message}}</span>
-                        @enderror --}}
+                            @error('lesson.platform')
+                                <span class="text-red-500 text-sm">{{$message}}</span>
+                            @enderror
 
                         </div>
                         
@@ -86,21 +86,10 @@
                                 @endforeach
                             </select>
                             @error('platform_id')
-                            <span class="text-red-500 text-sm">{{$message}}</span>
-                        @enderror
-
-                        </div>
-                        {{-- <div class="flex items-center mt-4">
-                            <label class="w-32">Tipo:</label>
-                            <select wire.midel="tipo" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                    <option value="{{$tipo}}">{{$tipo}}</option>
-                            </select>
-                            @error('tipo')
                                 <span class="text-red-500 text-sm">{{$message}}</span>
                             @enderror
 
-                        </div> --}}
-                        
+                        </div>                        
                         <div class="flex items-center mt-4">
                             <label class="w-32">URL:</label>
                             <input type="text" class="form-control w-full"x wire:model="url">

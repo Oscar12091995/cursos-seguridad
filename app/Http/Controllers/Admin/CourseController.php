@@ -11,6 +11,16 @@ use App\Mail\RejectCourse;
 
 class CourseController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:Leer curso')->only('index', 'show');
+        $this->middleware('can:Observar curso')->only('create', 'store');
+        $this->middleware('can:Aprovar curso')->only('edit', 'update');
+        $this->middleware('can:Rechazar curso')->only('reject');
+        
+    }
+
+
     public function index(){
         $courses = Course::where('status', 2)->paginate();
 

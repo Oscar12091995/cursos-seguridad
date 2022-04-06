@@ -1,5 +1,4 @@
 <x-app-layout>
-     {{-- Storage::url($course->imge->url) --}} {{-- 'storage/'.$course->image->url --}}
     {{-- seccion informacion de curso --}}
     <section class="mx-12 my-14">
         <div class="max-w-7xl flex flex-col items-center px-5 mx-auto  md:flex-row lg:px-28">
@@ -9,16 +8,16 @@
             <div class="w-full lg:w-5/6 lg:max-w-lg md:w-1/2">
                 <div class="">
                     <h1 class="ml-4 mb-2 text-2xl font-black tracking-tighter text-black  md:text-5xl title-font"> {{$course->title}} </h1>
-                    <p class="ml-8 mb-2 text-xl leading-relaxed text-left text-blueGray-600"> {{$course->subtitle}} </p>
+                    <h2 class="ml-8 mb-2 text-xl leading-relaxed text-left text-blueGray-600"> {{$course->subtitle}} </h2>
                     <p class="ml-8 mb-2 text-base leading-relaxed text-left text-blueGray-600"> <i class="fas fa-stream"></i> Categoria: {{$course->category->name}} </p>
                     <p class="ml-8 mb-2 text-base leading-relaxed text-left text-blueGray-600"> <i class="fas fa-users"></i> Matriculados: {{$course->students_count}} </p>
                     <p class="ml-8 mb-2 text-base leading-relaxed text-left text-blueGray-600"> <i class="fas fa-star"></i> Calificación: {{$course->rating}} </p>
                     <p class="ml-8 mb-2 text-base leading-relaxed text-left text-blueGray-600"> <i class="fas fa-star"></i> Precio del curso: {{$course->price->value}} </p>
                 </div>
                 <div class="flex items-center ml-8 my-4">
-                    <img class="h-12 w-12 object-cover rounded-full shadow-lg" src="{{$course->teacher->profile_photo_url}}" alt="">
+                    <img class="h-12 w-12 object-cover rounded-full shadow-lg" src="{{$course->teacher->profile_photo_url}}" alt="{{$course->teacher->name}}">
                     <div class="ml-4">
-                        <h3 class="font-bold text-gray-500 text-lg">Inst: {{$course->teacher->name}}</h3>
+                        <h4 class="font-bold text-gray-500 text-lg">Inst: {{$course->teacher->name}}</h4>
                     </div>
                 </div>
                 <div class="flex flex-col items-center w-full gap-2 md:justify-center md:flex-row">
@@ -60,7 +59,7 @@
 
             {{-- seccion temario --}}
             <section class="mb-8 px-6 py-4">
-                <h2 class="font-bold text-xl mb-2 text-black">Temario</h2>
+                <h1 class="font-bold text-xl mb-2 text-black">Temario</h1>
                 @foreach ($course->sections as $section)
                     <article class="mb-4 shadow" 
                     @if ($loop->first)
@@ -71,7 +70,7 @@
                         
                         
                         <header class="border border-gray-200 px-4 py2 cursor-pointer bg-gray-200" x-on:click="open = !open">
-                            <h1 class="font-bold text-lg text-gray-600 md:h-12 sm:h-20 mx-auto py-2">{{$section->name}}</h1>
+                            <h2 class="font-bold text-lg text-gray-600 md:h-12 sm:h-20 mx-auto py-2">{{$section->name}}</h2>
                         </header>
                         <div class="bg-white py-2 px-4" x-show="open">
                             <ul class="grid grid-cols-1 gap-2">
@@ -108,7 +107,7 @@
                 <h1 class="font-bold text-lg mb-2" style="color: rgb(32, 56, 100)">Cursos Recomendados:</h1>
                 @foreach ($similares as $similar)
                     <article class="flex mb-6">
-                        <img class="h-32 w-40 object-cover rounded-lg" src="{{url('storage/'.$similar->image->url)}}" alt="">
+                        <img class="h-32 w-40 object-cover rounded-lg" src="{{url('storage/'.$similar->image->url)}}" alt="{{$similar->image->url}}">
                         <div class="ml-3">
                             <h1>
                                 <a class="font-bold text-gray-500 mb-3" href="{{route('courses.show', $similar)}}">{{Str::limit($similar->title, 40)}}</a>

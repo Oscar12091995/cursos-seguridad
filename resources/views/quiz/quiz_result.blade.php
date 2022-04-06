@@ -75,7 +75,7 @@
                 </div>
                 @else
                 <div class="alert alert-danger mt-2" role="alert">
-                    <i class="fa fa-check"></i>&nbsp; Respuesta incorrecta<hr>
+                    <i class="fa fa-times"></i>&nbsp; Respuesta incorrecta<hr>
                 </div>
                 @endif
                 <hr>

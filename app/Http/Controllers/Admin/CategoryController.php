@@ -14,6 +14,16 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('can:Leer categorias')->only('index');
+        $this->middleware('can:Crear categorias')->only('create', 'store');
+        $this->middleware('can:Editar categorias')->only('edit', 'update');
+        $this->middleware('can:Eliminar categorias')->only('destroy');
+        
+    }
+
+    
     public function index()
     {
         $categories = Category::select('id', 'name')->get();

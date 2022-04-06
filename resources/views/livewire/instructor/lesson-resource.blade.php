@@ -2,7 +2,7 @@
   
     <div class="px-6 py-4">
         <header>
-            <h1 x-on:click="open = !open" class="font-bold cursor-pointer">Recursos de la leccion</h1>
+            <h2 x-on:click="open = !open" class="font-bold cursor-pointer">Recursos de la leccion</h2>
         </header>
         <div x-show="open">
             <hr class="my-2">

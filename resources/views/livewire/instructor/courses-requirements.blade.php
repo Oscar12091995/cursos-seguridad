@@ -15,7 +15,7 @@
             </form>
            @else
            <header  class="flex justify-between">
-            <h1>{{$item->name}}</h1>
+            <h2>{{$item->name}}</h2>
             <div>
                 <i wire:click="edit({{$item}})" class="fas fa-edit text-blue-500 cursor-pointer text-xl"></i>
             <i wire:click="destroy({{$item}})" class="fas fa-trash text-red-500 cursor-pointer ml-2 text-xl"></i>

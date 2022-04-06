@@ -14,6 +14,16 @@ class LevelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('can:Leer niveles')->only('index');
+        $this->middleware('can:Crear niveles')->only('create', 'store');
+        $this->middleware('can:Editar niveles')->only('edit', 'update');
+        $this->middleware('can:Eliminar niveles')->only('destroy');
+        
+    }
+
+
     public function index()
     {
         $levels = Level::all();

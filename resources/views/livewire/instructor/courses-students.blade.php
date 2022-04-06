@@ -54,15 +54,6 @@
                 <td class="px-6 py-4 whitespace-nowrap">
                     <a href="{{route('instructor.generate-pdf', ['course' => $course->id, 'student' => $student->id] )}}" class="text-indigo-600 hover:text-indigo-900">Constancia</a>
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                    {{-- {!! Form::model(['route' => ['instructor.courses.student', $student->id]]) !!}
-                    {!! Form::submit('Eliminar', [ 'class' => 'bg-red-600 text-white px-3 py-1 rounded-md text-1xl font-medium hover:bg-red-700 transition duration-300']) !!}
-                    {!! Form::close() !!} --}}
-                    {{-- <a href="{{route('instructor.eliminar', ['student' => $student->id])}}" class="bg-red-600 text-white px-3 py-1 rounded-md text-1xl font-medium hover:bg-red-700 transition duration-300">Eliminar</a> --}}
-                    {{-- <button type="button" class="bg-red-600 text-white px-3 py-1 rounded-md text-1xl font-medium hover:bg-red-700 transition duration-300" wire:click="student({{ $course->id }})">Eliminar</button> --}}
-                    
-                </td>
-
               </tr>
               @endforeach
               <!-- More people... -->

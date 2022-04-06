@@ -13,6 +13,16 @@ class PriceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('can:Leer precios')->only('index');
+        $this->middleware('can:Crear precios')->only('create', 'store');
+        $this->middleware('can:Editar precios')->only('edit', 'update');
+        $this->middleware('can:Eliminar precios')->only('destroy');
+        
+    }
+
+
     public function index()
     {
         $prices = Price::all();

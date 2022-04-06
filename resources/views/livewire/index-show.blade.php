@@ -5,7 +5,7 @@
                @foreach ($courses as $course)
                <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
                     <div class="bg-white shadow rounded-lg border">
-                        <img class="rounded-t-lg shadow"src="{{url('storage/'.$course->image->url)}}">
+                        <img class="rounded-t-lg shadow h-44 w-full object-cover" src="{{url('storage/'.$course->image->url)}}" alt="{{$course->title}}">
                         <div class="p-5 text-gray-600">
                           <div class="text-black text-2xl font-thin">{{Str::limit($course->subtitle, 20)}} {{--  --}}</div>
                           <p class="pt-1 text-gray-500 font-semibold mb-2">

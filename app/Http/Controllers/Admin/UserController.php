@@ -14,6 +14,16 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('can:Leer usuarios')->only('index');
+        $this->middleware('can:Crear usuarios')->only('create', 'store');
+        $this->middleware('can:Editar usuarios')->only('edit', 'update');
+        $this->middleware('can:Eliminar usuarios')->only('destroy');
+        
+    }
+
+
     public function index()
     {
         //

@@ -80,5 +80,42 @@ class PermissionSeeder extends Seeder
         Permission::create([
             'name' => 'Eliminar preguntas',
         ]);
+        Permission::create([
+            'name' => 'Leer curso',
+        ]);
+        Permission::create([
+            'name' => 'Observar curso',
+        ]);
+        Permission::create([
+            'name' => 'Aprovar curso',
+        ]);
+        Permission::create([
+            'name' => 'Rechazar curso',
+        ]);
+        Permission::create([
+            'name' => 'Leer niveles',
+        ]);
+        Permission::create([
+            'name' => 'Crear niveles',
+        ]);
+        Permission::create([
+            'name' => 'Editar niveles',
+        ]);
+        Permission::create([
+            'name' => 'Eliminar niveles',
+        ]);
+        Permission::create([
+            'name' => 'Leer precios',
+        ]);
+        Permission::create([
+            'name' => 'Crear precios',
+        ]);
+        Permission::create([
+            'name' => 'Editar precios',
+        ]);
+        Permission::create([
+            'name' => 'Eliminar precios',
+        ]);
+    
     }
 }

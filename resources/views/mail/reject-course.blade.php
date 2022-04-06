@@ -7,7 +7,7 @@
         <title>Document</title>
     </head>
     <body>
-      <h1>Este es un correo de prueba</h1>
+      <h1>Rechazo de Curso!</h1>
         <p>El curso <strong>{{$course->title}}</strong> no se ha aprobado</p>
         <h2>Motivo:</h2>
         {!!$course->observation->body!!}

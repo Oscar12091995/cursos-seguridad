@@ -61,9 +61,9 @@
                     <div class="flex items-center">
                         <div class="flex items-center h-10 w-10">
                           @isset($course->image)
-                          <img class="hidden md:block h-10 w-10 rounded-full object-center object-cover " src="{{url('storage/'.$course->image->url)}}" alt="">
+                          <img class="hidden md:block h-10 w-10 rounded-full object-center object-cover " src="{{url('storage/'.$course->image->url)}}" alt="{{$course->title}}">
                           @else
-                          <img class="w-10 h-10 rounded-full object-center object-cover shadow-md" id="picture" src="https://images.pexels.com/photos/260367/pexels-photo-260367.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+                          <img class="w-10 h-10 rounded-full object-center object-cover shadow-md" id="picture" src="https://images.pexels.com/photos/260367/pexels-photo-260367.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="bomberos">
                           @endisset
                         
                         </div>

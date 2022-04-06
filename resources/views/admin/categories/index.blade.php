@@ -80,7 +80,7 @@
     
     <div class="card">
         <div class="card-body">
-            <table id="example" class="table table-striped table-bordered text-center">
+            <table id="example" class="table table-striped table-bordered">
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -92,10 +92,10 @@
                 <tbody>
                     @forelse ($categories as $category)
                         <tr>
-                            <td>{{$category->id}}</td>
+                            <td width="8px">{{$category->id}}</td>
                             <td>{{$category->name}}</td>
-                            <td><a href="{{route('admin.categories.edit', $category)}}" class="btn btn-outline-primary"> <i class="fas fa-edit text-base"></i></a>  </td>
-                            <td>
+                            <td width="5px"><a href="{{route('admin.categories.edit', $category)}}" class="btn btn-outline-primary"> <i class="fas fa-edit text-base"></i></a>  </td>
+                            <td width="5px">
                                 <form action="{{route('admin.categories.destroy', $category)}}" method="POST" >
                                 @csrf
                                 @method('delete')
