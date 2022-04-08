@@ -16,13 +16,13 @@ class QuestionFactory extends Factory
     public function definition()
     {
         return [
-            'quize_id' => $this->faker->randomElement([1, 2]),
+            'quize_id' => Quize::all()->random()->id,
             'question' => $this->faker->sentence(rand(1,2)),
-            'answer1' =>$this->faker->sentence(rand(1)),
-            'answer2' =>$this->faker->sentence(rand(1)),
-            'answer3' =>$this->faker->sentence(rand(1)),
-            'answer4' =>$this->faker->sentence(rand(1)),
-            'correct_answer' => 'answer'.rand(1),
+            'answer1' =>$this->faker->sentence(rand(1, 2)),
+            'answer2' =>$this->faker->sentence(rand(1, 2)),
+            'answer3' =>$this->faker->sentence(rand(1, 2)),
+            'answer4' =>$this->faker->sentence(rand(1, 2)),
+            'correct_answer' => 'answer'.rand(1, 2),
         ];
     }
 }
