@@ -17,7 +17,7 @@ class QuestionFactory extends Factory
     {
         return [
             'quize_id' => Quize::all()->random()->id,
-            'question' => $this->faker->sentence(rand(1,2)),
+            'question' => $this->faker->sentence(rand(1, 2)),
             'answer1' =>$this->faker->sentence(rand(1, 2)),
             'answer2' =>$this->faker->sentence(rand(1, 2)),
             'answer3' =>$this->faker->sentence(rand(1, 2)),
