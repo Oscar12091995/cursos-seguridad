@@ -14,9 +14,9 @@ use App\Http\Livewire\IndexShow;
 
 Route::get('/', HomeController::class )->name('home');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+/* Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
-})->name('dashboard');
+})->name('dashboard'); */
 
 Route::get('cursos',[CourseController::class, 'index'])->name('courses.index');
 

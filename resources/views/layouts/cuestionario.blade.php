@@ -6,11 +6,11 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
-        <title>Cursos Seguridad Industrial</title>
+        <title>Cursos Seguridad Industrial Islander</title>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-        
+        <link rel="shortcut icon" type="image/png" href="{{ asset('images/inicio/reflective-vest.png') }}">
         
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">        

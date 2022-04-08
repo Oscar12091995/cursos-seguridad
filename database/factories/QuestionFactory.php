@@ -18,11 +18,11 @@ class QuestionFactory extends Factory
         return [
             'quize_id' => $this->faker->randomElement([1, 2]),
             'question' => $this->faker->sentence(rand(1,2)),
-            'answer1' =>$this->faker->sentence(rand(2,4)),
-            'answer2' =>$this->faker->sentence(rand(2,4)),
-            'answer3' =>$this->faker->sentence(rand(2,4)),
-            'answer4' =>$this->faker->sentence(rand(2,4)),
-            'correct_answer' => 'answer'.rand(1,4),
+            'answer1' =>$this->faker->sentence(rand(1)),
+            'answer2' =>$this->faker->sentence(rand(1)),
+            'answer3' =>$this->faker->sentence(rand(1)),
+            'answer4' =>$this->faker->sentence(rand(1)),
+            'correct_answer' => 'answer'.rand(1),
         ];
     }
 }

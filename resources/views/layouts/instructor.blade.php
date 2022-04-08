@@ -5,9 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <link rel="shortcut icon" type="image/png" href="{{ asset('images/casco.png') }}">
+        <link rel="shortcut icon" type="image/png" href="{{ asset('images/inicio/reflective-vest.png') }}">
 
-        <title>Cursos Seguridad Industrial</title>
+        <title>Cursos Seguridad Industrial Islander</title>
+        
         
 
         <!-- Fonts -->
