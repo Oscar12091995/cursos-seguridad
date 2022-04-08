@@ -20,7 +20,7 @@ class ResultFactory extends Factory
             'quize_id'=> Quize::all()->random()->id,
             'point' => rand(0,100),
             'correct' => rand(1, 2),
-            'wrong' => rand(0),
+            'wrong' => rand(0, 1),
         ];
     }
 }
