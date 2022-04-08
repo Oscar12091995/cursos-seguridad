@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Quize;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -16,9 +17,9 @@ class ResultFactory extends Factory
     {
         return [
             'user_id'=>User::all()->random()->id,
-            'quize_id'=> rand(1),
+            'quize_id'=> Quize::all()->random()->id,
             'point' => rand(0,100),
-            'correct' => rand(1),
+            'correct' => rand(1, 2),
             'wrong' => rand(0),
         ];
     }
