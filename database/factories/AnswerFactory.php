@@ -16,8 +16,8 @@ class AnswerFactory extends Factory
     {
         return [
             'user_id'=>rand(1,2),
-            'question_id'=> rand(1),
-            'answer' => 'answer'.rand(1)
+            'question_id'=> rand(1, 2),
+            'answer' => 'answer'.rand(1, 2)
         ];
     }
 }
