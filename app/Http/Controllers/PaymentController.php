@@ -3,53 +3,80 @@
 namespace App\Http\Controllers;
  
 use App\Models\Course;
-
+use Faker\Provider\ar_EG\Payment;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Config;
+use PayPal\Api\Amount;
+use PayPal\Api\Payer;
+use PayPal\Api\Payment as ApiPayment;
+use PayPal\Api\PaymentExecution;
+use PayPal\Api\RedirectUrls;
+use PayPal\Api\Transaction;
+use PayPal\Auth\OAuthTokenCredential;
+use PayPal\Exception\PayPalConnectionException;
+use PayPal\Rest\ApiContext;
 
 class PaymentController extends Controller
 {
 
     
+    private $apiContext;
+
 
     
     public function checkout(Course $course){
         return view('payment.checkout', compact('course'));
     }
 
+    public function __construct()
+    {
+        $payPalConfig = Config::get('paypal');
+
+        $this->apiContext = new ApiContext(
+            new OAuthTokenCredential(
+                config('services.paypal.client_id'),     // ClientID
+                config('services.paypal.client_secret') //clientSecret
+            )
+        );
+
+       
+    }
+
     public function pay(Course $course){
-        $apiContext = new \PayPal\Rest\ApiContext(
+
+       /*  $apiContext = new \PayPal\Rest\ApiContext(
             new \PayPal\Auth\OAuthTokenCredential(
                 config('services.paypal.client_id'),     // ClientID
                 config('services.paypal.client_secret')      // ClientSecret
             )
         );
+ */
 
-        $payer = new \PayPal\Api\Payer();
+        $payer = new Payer();
         $payer->setPaymentMethod('paypal');
 
-        $amount = new \PayPal\Api\Amount();
+        $amount = new Amount();
         $amount->setTotal($course->price->value);
         $amount->setCurrency('MXN');
 
-        $transaction = new \PayPal\Api\Transaction();
+        $transaction = new Transaction();
         $transaction->setAmount($amount);
 
-        $redirectUrls = new \PayPal\Api\RedirectUrls();
+        $redirectUrls = new RedirectUrls();
         $redirectUrls->setReturnUrl(route('payment.approved', $course))
             ->setCancelUrl(route('payment.checkout', $course));
 
-        $payment = new \PayPal\Api\Payment();
+        $payment = new ApiPayment();
         $payment->setIntent('sale')
         ->setPayer($payer)
         ->setTransactions(array($transaction))
         ->setRedirectUrls($redirectUrls);
         try {
       
-            $payment->create($apiContext);
+            $payment->create($this->apiContext);
             return redirect()->away($payment->getApprovalLink());
         }
-        catch (\PayPal\Exception\PayPalConnectionException $ex) {
+        catch (PayPalConnectionException $ex) {
             // This will print the detailed information on the exception.
             //REALLY HELPFUL FOR DEBUGGING
             echo $ex->getData();
@@ -64,13 +91,13 @@ class PaymentController extends Controller
                 config('services.paypal.client_id'),     // ClientID
                 config('services.paypal.client_secret')      // ClientSecret
             )
-        );
+        ); */
 
         $paymentId = $_GET['paymentId'];
-        $payment = \PayPal\Api\Payment::get($paymentId, $apiContext);
-        $execution = new \PayPal\Api\PaymentExecution();
+        $payment = ApiPayment::get($paymentId, $this->apiContext);
+        $execution = new PaymentExecution();
         $execution->setPayerId($_GET['PayerID']);
-        $result = $payment->execute($execution, $apiContext); */
+        $result = $payment->execute($execution, $this->apiContext);
 
         
         $course->students()->attach(auth()->user()->id);
