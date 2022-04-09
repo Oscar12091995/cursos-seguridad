@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 use App\Models\Answer;
-
+use App\Models\Question;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class AnswerFactory extends Factory
@@ -16,7 +16,7 @@ class AnswerFactory extends Factory
     {
         return [
             'user_id'=>rand(1,2),
-            'question_id'=> rand(1, 2),
+            'question_id'=> Question::all()->random()->id,
             'answer' => 'answer'.rand(1, 2)
         ];
     }
