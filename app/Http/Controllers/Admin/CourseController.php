@@ -15,7 +15,7 @@ class CourseController extends Controller
     {
         $this->middleware('can:Leer curso')->only('index', 'show');
         $this->middleware('can:Observar curso')->only('create', 'store');
-        $this->middleware('can:Aprovar curso')->only('edit', 'update', 'approved');
+        $this->middleware('can:Aprovar curso')->only('edit', 'update', 'approved', 'observation');
         $this->middleware('can:Rechazar curso')->only('reject');
         
     }
