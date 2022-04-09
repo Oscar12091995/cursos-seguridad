@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
+
+    
+
+    
     public function checkout(Course $course){
         return view('payment.checkout', compact('course'));
     }
@@ -41,6 +45,7 @@ class PaymentController extends Controller
         ->setTransactions(array($transaction))
         ->setRedirectUrls($redirectUrls);
         try {
+      
             $payment->create($apiContext);
             return redirect()->away($payment->getApprovalLink());
         }
@@ -50,10 +55,11 @@ class PaymentController extends Controller
             echo $ex->getData();
         }
 
+        
     }
 
     public function approved(Request $request, Course $course){
-        $apiContext = new \PayPal\Rest\ApiContext(
+       /*  $apiContext = new \PayPal\Rest\ApiContext(
             new \PayPal\Auth\OAuthTokenCredential(
                 config('services.paypal.client_id'),     // ClientID
                 config('services.paypal.client_secret')      // ClientSecret
@@ -64,7 +70,8 @@ class PaymentController extends Controller
         $payment = \PayPal\Api\Payment::get($paymentId, $apiContext);
         $execution = new \PayPal\Api\PaymentExecution();
         $execution->setPayerId($_GET['PayerID']);
-        $result = $payment->execute($execution, $apiContext);
+        $result = $payment->execute($execution, $apiContext); */
+
         
         $course->students()->attach(auth()->user()->id);
         

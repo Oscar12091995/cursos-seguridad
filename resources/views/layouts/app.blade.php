@@ -46,5 +46,7 @@
         @isset($js)
             {{$js}}
         @endisset
+        
+        @stack('script')
     </body>
 </html>

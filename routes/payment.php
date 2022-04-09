@@ -8,3 +8,5 @@ Route::get('{course}/checkout', [PaymentController:: class, 'checkout'])->name('
 Route::get('{course}/pay', [PaymentController:: class, 'pay'])->name('pay');
 
 Route::get('{course}/approved', [PaymentController:: class, 'approved'])->name('approved');
+
+/* Route::get('{course}/pay', PaymentOrder::class)->name('pay'); */

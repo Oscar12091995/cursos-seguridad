@@ -1121,6 +1121,10 @@ select {
   margin-left: 5rem;
   margin-right: 5rem;
 }
+.-mx-3 {
+  margin-left: -0.75rem;
+  margin-right: -0.75rem;
+}
 .my-14 {
   margin-top: 3.5rem;
   margin-bottom: 3.5rem;
@@ -1140,10 +1144,6 @@ select {
 .my-24 {
   margin-top: 6rem;
   margin-bottom: 6rem;
-}
-.-mx-3 {
-  margin-left: -0.75rem;
-  margin-right: -0.75rem;
 }
 .my-0 {
   margin-top: 0px;
@@ -2170,6 +2170,10 @@ select {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
 }
+.px-24 {
+  padding-left: 6rem;
+  padding-right: 6rem;
+}
 .px-10 {
   padding-left: 2.5rem;
   padding-right: 2.5rem;
@@ -2185,10 +2189,6 @@ select {
 .px-14 {
   padding-left: 3.5rem;
   padding-right: 3.5rem;
-}
-.px-24 {
-  padding-left: 6rem;
-  padding-right: 6rem;
 }
 .pt-6 {
   padding-top: 1.5rem;
@@ -2232,6 +2232,9 @@ select {
 .pl-2 {
   padding-left: 0.5rem;
 }
+.pb-6 {
+  padding-bottom: 1.5rem;
+}
 .pt-10 {
   padding-top: 2.5rem;
 }
@@ -2243,9 +2246,6 @@ select {
 }
 .pt-8 {
   padding-top: 2rem;
-}
-.pb-6 {
-  padding-bottom: 1.5rem;
 }
 .text-left {
   text-align: left;
@@ -3511,6 +3511,14 @@ select {
     width: 50%;
   }
 
+  .md\:w-7\/12 {
+    width: 58.333333%;
+  }
+
+  .md\:w-5\/12 {
+    width: 41.666667%;
+  }
+
   .md\:w-1\/2 {
     width: 50%;
   }
@@ -3521,14 +3529,6 @@ select {
 
   .md\:w-10\/12 {
     width: 83.333333%;
-  }
-
-  .md\:w-7\/12 {
-    width: 58.333333%;
-  }
-
-  .md\:w-5\/12 {
-    width: 41.666667%;
   }
 
   .md\:w-96 {

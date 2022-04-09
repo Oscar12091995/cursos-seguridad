@@ -1,4 +1,4 @@
-<x-app-layout>
+<div>
     <div class="min-w-screen min-h-screen bg-gray-50 py-5 px-24">
       
         <div class="w-full bg-white border-t border-b border-gray-200 px-5 py-10 text-gray-800">
@@ -32,12 +32,10 @@
                         </div>
                     </div>
                     <div class="px-3 justify-center items-center md:w-5/12">
-                        <div class="justify-center">
-                            <a class="text-center block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-2 font-semibold cursor-pointer" href="{{route('payment.pay', $course)}}"><i class="mdi mdi-lock-outline mr-1"></i> Pagar ahora</a>
-                            
-                        </div>
-                        {{-- <div class="w-80 items-center" id="paypal-button-container"></div> --}}
-                        {{-- <a href="{{route('payment.pay', $course)}}" class="w-80 items-center" id="paypal-button-container"></a> --}}
+                        {{-- <div class="justify-center"> --}}
+                            {{-- <a class="text-center block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-2 font-semibold cursor-pointer" href="{{route('payment.pay', $course)}}"><i class="mdi mdi-lock-outline mr-1"></i> Pagar ahora</a> --}}
+                            <div class="w-80 items-center" id="paypal-button-container"></div>
+                        {{-- </div> --}}
                     </div>
                 </div>
             </div>
@@ -49,74 +47,69 @@
         </div>
     </div>
 
-    <script src="https://www.paypal.com/sdk/js?client-id={{config('services.paypal.client_id')}}&currency=MXN"></script>
+   @push('script')
+   <script src="https://www.paypal.com/sdk/js?client-id={{config('services.paypal.client_id')}}&currency=MXN"></script>
 
-    <!-- Set up a container element for the button -->
+   <!-- Set up a container element for the button -->
 
-    
+   
 
-    <script>
+   <script>
 
-      paypal.Buttons({
+     paypal.Buttons({
 
-        // Sets up the transaction when a payment button is clicked
+       // Sets up the transaction when a payment button is clicked
 
-        createOrder: (data, actions) => {
+       createOrder: (data, actions) => {
 
-          return actions.order.create({
+         return actions.order.create({
 
-            purchase_units: [{
+           purchase_units: [{
 
-              amount: {
+             amount: {
 
-                value: "{{$course->price->value}}", // Can also reference a variable or function
-                currency: "MXN"
+               value: "{{$course->price->value}}", // Can also reference a variable or function
+               currency: "MXN"
 
-              }
+             }
 
-            }]
+           }]
 
-          });
+         });
 
-        },
+       },
 
-        // Finalize the transaction after payer approval
+       // Finalize the transaction after payer approval
 
-        onApprove: (data, actions) => {
+       onApprove: (data, actions) => {
 
-          return actions.order.capture().then(function(orderData) {
-           /*    return fetch('/approved',{
-                  
-              }) */
+         return actions.order.capture().then(function(orderData) {
 
-            // Successful capture! For dev/demo purposes:
+           // Successful capture! For dev/demo purposes:
 
-            console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+           console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
 
-            console.log(orderData);
+           console.log(orderData);
 
-            const transaction = orderData.purchase_units[0].payments.captures[0];
+           const transaction = orderData.purchase_units[0].payments.captures[0];
 
-            alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
+           alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
 
+           // When ready to go live, remove the alert and show a success message within this page. For example:
 
-            // When ready to go live, remove the alert and show a success message within this page. For example:
+           // const element = document.getElementById('paypal-button-container');
 
-            // const element = document.getElementById('paypal-button-container');
+           // element.innerHTML = '<h3>Thank you for your payment!</h3>';
 
-            // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+           // Or go to another URL:  actions.redirect('thank_you.html');
 
-            URL:  actions.redirect('thank_you.html');
-            //
+         });
 
-          });
+       }
 
-        }
+     }).render('#paypal-button-container');
 
-      }).render('#paypal-button-container');
-
-    </script>
-    
-
-    {{-- @livewire('payment-order', ['course' => $course], key($course->id)) --}}
-</x-app-layout>
+   </script>
+       
+   @endpush
+</div>

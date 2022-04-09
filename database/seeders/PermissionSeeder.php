@@ -48,6 +48,9 @@ class PermissionSeeder extends Seeder
             'name' => 'Editar usuarios',
         ]);
         Permission::create([
+            'name' => 'Leer Categorias',
+        ]);
+        Permission::create([
             'name' => 'Crear Categorias',
         ]);
         Permission::create([

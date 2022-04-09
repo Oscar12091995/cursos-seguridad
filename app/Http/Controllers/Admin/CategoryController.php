@@ -16,10 +16,10 @@ class CategoryController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('can:Leer categorias')->only('index');
-        $this->middleware('can:Crear categorias')->only('create', 'store');
-        $this->middleware('can:Editar categorias')->only('edit', 'update');
-        $this->middleware('can:Eliminar categorias')->only('destroy');
+        $this->middleware('can:Leer Categorias')->only('index');
+        $this->middleware('can:Crear Categorias')->only('create', 'store');
+        $this->middleware('can:Editar Categorias')->only('edit', 'update');
+        $this->middleware('can:Eliminar Categorias')->only('destroy');
         
     }
 
