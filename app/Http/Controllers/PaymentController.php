@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
  
 use App\Models\Course;
-use Faker\Provider\ar_EG\Payment;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Config;
 use PayPal\Api\Amount;
 use PayPal\Api\Payer;
 use PayPal\Api\Payment as ApiPayment;
@@ -15,11 +12,14 @@ use PayPal\Api\Transaction;
 use PayPal\Auth\OAuthTokenCredential;
 use PayPal\Exception\PayPalConnectionException;
 use PayPal\Rest\ApiContext;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 
 class PaymentController extends Controller
 {
 
-    
+  
+
     private $apiContext;
 
 
@@ -39,18 +39,31 @@ class PaymentController extends Controller
             )
         );
 
+        $this->apiContext->setConfig(
+            array(
+                'mode' => 'LIVE',
+                'log.LogEnabled' => true,
+                'log.FileName' => '../PayPal.log',
+                'log.LogLevel' => 'INFO', // PLEASE USE `INFO` LEVEL FOR LOGGING IN LIVE ENVIRONMENTS
+            )
+        );  
+
        
     }
 
     public function pay(Course $course){
 
-       /*  $apiContext = new \PayPal\Rest\ApiContext(
+        $apiContext = new \PayPal\Rest\ApiContext(
             new \PayPal\Auth\OAuthTokenCredential(
                 config('services.paypal.client_id'),     // ClientID
                 config('services.paypal.client_secret')      // ClientSecret
             )
         );
- */
+
+        $apiContext->setConfig([
+        'mode' => 'sandbox',
+        ]);
+
 
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
@@ -65,7 +78,7 @@ class PaymentController extends Controller
         $redirectUrls = new RedirectUrls();
         $redirectUrls->setReturnUrl(route('payment.approved', $course))
             ->setCancelUrl(route('payment.checkout', $course));
-
+            
         $payment = new ApiPayment();
         $payment->setIntent('sale')
         ->setPayer($payer)
@@ -86,12 +99,16 @@ class PaymentController extends Controller
     }
 
     public function approved(Request $request, Course $course){
-       /*  $apiContext = new \PayPal\Rest\ApiContext(
+        $apiContext = new \PayPal\Rest\ApiContext(
             new \PayPal\Auth\OAuthTokenCredential(
                 config('services.paypal.client_id'),     // ClientID
                 config('services.paypal.client_secret')      // ClientSecret
             )
-        ); */
+        );
+
+        $apiContext->setConfig([
+            'mode' => 'live',
+           ]);
 
         $paymentId = $_GET['paymentId'];
         $payment = ApiPayment::get($paymentId, $this->apiContext);
@@ -104,6 +121,5 @@ class PaymentController extends Controller
         
         return redirect()->route('courses.status', $course);
     }
-    
 
 }
