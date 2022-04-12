@@ -74,7 +74,7 @@ class PaymentController extends Controller
 
 
     public function approved(Request $request, Course $course){
-       /*  $apiContext = new \PayPal\Rest\ApiContext(
+        $apiContext = new \PayPal\Rest\ApiContext(
             new \PayPal\Auth\OAuthTokenCredential(
                 config('services.paypal.client_id'),     // ClientID
                 config('services.paypal.client_secret')      // ClientSecret
@@ -85,7 +85,7 @@ class PaymentController extends Controller
         $payment = \PayPal\Api\Payment::get($paymentId, $apiContext);
         $execution = new \PayPal\Api\PaymentExecution();
         $execution->setPayerId($_GET['PayerID']);
-        $result = $payment->execute($execution, $apiContext); */
+        $result = $payment->execute($execution, $apiContext);
 
         
         $course->students()->attach(auth()->user()->id);
