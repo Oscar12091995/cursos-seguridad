@@ -47,8 +47,11 @@
                       Edit     
                     </th>
                     <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Examen    
-                      </th>
+                        Borrar  
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      examen 
+                    </th>
               </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200 text-gray-600 text-sm font-light">
@@ -130,6 +133,15 @@
                     </div>
                   </div>
                 </td>
+                <td class="py-3 px-6 text-center">
+                    <div class="flex item-center justify-center">
+                      <div class="transform hover:text-purple-500 hover:scale-110 text-xs">
+                        <a href="{{route('instructor.courses.destroy', $course)}}" data-toggle="tooltip" data-placement="top" title="Editar curso">
+                          <i class="fas fa-trash"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                     <div class="text-sm text-gray-900 text-center">{{$course->exams->count()}}</div>
                   </td>

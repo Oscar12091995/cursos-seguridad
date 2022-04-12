@@ -11,7 +11,7 @@ Route::redirect('', 'instructor/courses');
 
 Route::resource('courses', CourseController::class)->middleware('can:Ver dashboard')->names('courses');
 
-
+Route::get('courses/{course}/destroy', [CourseController::class, 'destroy'])->name('courses.destroy');
 
 Route::get('courses/{course}/curriculum', CoursesCurriculum::class)->middleware('can:Actualizar cursos')->name('courses.curriculum');
 

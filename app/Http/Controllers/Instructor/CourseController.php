@@ -180,10 +180,13 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Course $course)
     {
-        //
+        $course->delete();
+        return view('instructor.courses.index');
     }
+
+
     public function goals(Course $course){
         $this->authorize('dicatated', $course);
         return view('instructor.courses.goals', compact('course'));
