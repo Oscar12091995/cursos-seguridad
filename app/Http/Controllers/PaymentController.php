@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 /* use PayPal\Api\Amount;
 use PayPal\Api\Payer; */
-use PayPal\Api\Payment as ApiPayment;
-use PayPal\Api\PaymentExecution;
+/* use PayPal\Api\Payment as ApiPayment; */
+/* use PayPal\Api\PaymentExecution; */
 /* use PayPal\Api\RedirectUrls;
 use PayPal\Api\Transaction;
 use PayPal\Auth\OAuthTokenCredential;
@@ -82,8 +82,8 @@ class PaymentController extends Controller
         );
 
         $paymentId = $_GET['paymentId'];
-        $payment = ApiPayment::get($paymentId, $apiContext);
-        $execution = new PaymentExecution();
+        $payment = \PayPal\Api\Payment::get($paymentId, $apiContext);
+        $execution = new \PayPal\Api\PaymentExecution();
         $execution->setPayerId($_GET['PayerID']);
         $result = $payment->execute($execution, $apiContext);
 
