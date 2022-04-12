@@ -76,6 +76,7 @@
 <body>
   <section style="margin-bottom: 40px">
       {{-- seccion de arriba --}}
+      {{-- <img src="{!!asset('storage/'.$course->image->url)!!}" style="width: 4.29cm; height: 1.26cm; display:fill; margin: 0 0 10 0; float: left;" alt=""> --}}
     <img src="{!! asset('images/Islander JPG.jpg') !!}" style="width: 4.29cm; height: 1.26cm; display:fill; margin: 0 0 10 0; float: right;" alt="">
     <br>
   </section>

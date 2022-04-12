@@ -40,7 +40,7 @@ class PaymentController extends Controller
  
         $amount = new \PayPal\Api\Amount();
         $amount->setTotal($course->price->value);
-        $amount->setCurrency('BRL');
+        $amount->setCurrency('MXN');
  
         $transaction = new \PayPal\Api\Transaction();
         $transaction->setAmount($amount);
