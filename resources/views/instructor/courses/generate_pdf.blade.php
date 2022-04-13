@@ -136,7 +136,7 @@
         Agente Capacitador: DGC Representantes de la Comisión Mixta de Capacitación, Adiestramiento y Productividad
       </div>
 
-      <div style="margin-top: 30%; font-size: 10pt;">
+      <div style="margin-top: 20%; font-size: 10pt;">
         <div style="float: left">
           Patrón o representante legal
         </div>
