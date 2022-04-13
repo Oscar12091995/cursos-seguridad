@@ -5,7 +5,7 @@
     <title>Generate Pdf</title>
     <style>
       body{
-        margin: 10% 15% 10% 15%;
+        margin: 10% 10% 10% 10%;
       }
       .titulo{
         text-align: center;
@@ -75,9 +75,12 @@
 </head>
 <body>
   <section style="margin-bottom: 40px">
+    <div class="titulo">
+      <img src="{!!asset('storage/'.$course->image->url)!!}" style="width: 4cm; height: 2cm; display:fill; margin: 0 0 10 0; float: left; object-fit: cover;" alt="">
+    </div>
       {{-- seccion de arriba --}}
       {{-- <img src="{!!asset('storage/'.$course->image->url)!!}" style="width: 4.29cm; height: 1.26cm; display:fill; margin: 0 0 10 0; float: left;" alt=""> --}}
-    <img src="{!! asset('images/Islander JPG.jpg') !!}" style="width: 4.29cm; height: 1.26cm; display:fill; margin: 0 0 10 0; float: right;" alt="">
+    <img src="{!! asset('images/Islander JPG.jpg') !!}" style="width: 4cm; height: 1cm; display:fill; margin: 0 0 10 0; float: right; object-fit: cover;" alt="">
     <br>
   </section>
 
