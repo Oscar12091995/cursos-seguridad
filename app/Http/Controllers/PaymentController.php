@@ -86,6 +86,8 @@ class PaymentController extends Controller
         $execution = new \PayPal\Api\PaymentExecution();
         $execution->setPayerId($_GET['PayerID']);
         $result = $payment->execute($execution, $apiContext); */
+        
+        //despues de aprovado
 
         
         $course->students()->attach(auth()->user()->id);
