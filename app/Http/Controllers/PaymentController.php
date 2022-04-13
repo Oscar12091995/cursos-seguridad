@@ -87,7 +87,7 @@ class PaymentController extends Controller
         $execution->setPayerId($_GET['PayerID']);
         $result = $payment->execute($execution, $apiContext); */
         
-        //despues de aprovado
+        
 
         
         $course->students()->attach(auth()->user()->id);
