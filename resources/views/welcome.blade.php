@@ -115,8 +115,8 @@
         <div class="md:flex justify-center text-center my-5">
             <h2 class="text-3xl font-semibold text-gray-800">Cursos creados recientemente</h2>
         </div>
-     <div class="px-14 md:ml-36 ml-10 mr-10 md:w-10/12 flex flex-col items-center justify-center md:px-20 md:flex md:items-center md:justify-between ">
-        <div class="glider-contain items-center ">
+     <div class="px-10 md:ml-36 ml-10 mr-10 md:w-10/12 flex flex-col items-center justify-center md:px-20 md:flex md:items-center md:justify-between ">
+        <div class="glider-contain items-center justify-center">
             <div class="glider items-center">
                     @foreach ($courses as $course)
                         <x-course-card :course="$course" class="mx-2"/>

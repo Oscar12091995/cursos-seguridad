@@ -42,7 +42,7 @@
         
     </x-jet-authentication-card> --}}
 
-    <div class="bg-white h-screen w-screen my-12 md:my-0">
+    <div class="bg-white md:h-screen sm:h-full w-screen sm:my-0 my-12">
         <div class="flex flex-col items-center flex-1 h-full justify-center px-4 sm:px-0">
             <div class="flex rounded-lg shadow-lg w-full sm:w-3/4 lg:w-1/2 bg-white sm:mx-0" style="height: 500px">
                 <div class="flex flex-col w-full md:w-1/2 p-4">

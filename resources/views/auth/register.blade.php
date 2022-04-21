@@ -66,7 +66,7 @@
 
 
     <div class="w-full min-h-screen flex flex-col sm:justify-center items-center bg-blue-200 pt-6 sm:pt-0">
-        <div class="w-full sm:max-w-md p-5 mx-auto border-2 rounded-lg shadow-md bg-white">
+        <div class="w-full sm:max-w-md sm:max-h-min p-5 mx-auto border-2 rounded-lg shadow-md bg-white">
             <h2 class="mb-2 text-3xl font-black tracking-tighter text-black text-center md:text-5xl title-font">Crear Cuenta </h2>
             <form method="POST" action="{{ route('register') }}">
                 @csrf
