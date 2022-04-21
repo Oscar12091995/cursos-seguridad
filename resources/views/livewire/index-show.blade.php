@@ -1,4 +1,4 @@
-    <div class="my-8 mx-20">
+    <div class="my-8 mx-8 md:mx-20">
         <div class="container mx-auto px-6">
             <h3 class="text-gray-700 text-3xl font-medium">Mis Cursos</h3>
             <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
