@@ -28,7 +28,7 @@
             @endif
                 {{-- marcar como culminada --}}
             <div class="flex justify-between mt-4">
-                <div class="flex items-center cursor-pointer order-1" wire:click="completed">
+                <div class="flex items-center cursor-pointer sm:order-1" wire:click="completed">
                     @if ($current->completed)
                         <i class="fas fa-toggle-on text-blue-600 text-xl"></i>
                     @else
@@ -37,7 +37,7 @@
                         <p class="md:text-xl sm:text-base ml-2 text-red-600">Marcar unidad como terminada</p>
                 </div>
                 @if ($current->resource)
-                    <div wire:click="download" class="order-2">
+                    <div wire:click="download" class="sm:order-2">
                         <div class="each flex hover:shadow-lg select-none p-10 rounded-md border-gray-300 border mb-3 hover:border-gray-500 cursor-pointer px-2 py-2">
                             <div class="left">
                                 <div class="header text-blue-600 font-semibold text-xl">Descargar <i class="fas fa-download text-base"></i></div>
