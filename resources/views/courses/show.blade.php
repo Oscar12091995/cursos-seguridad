@@ -3,7 +3,7 @@
     <section class="mx-12 my-14">
         <div class="max-w-7xl flex flex-col items-center px-5 mx-auto  md:flex-row lg:px-28">
             <div class="flex flex-col items-start w-full pt-0 mb-16 text-left md:mr-8 md:w-1/2 md:mb-0">
-                <img class="object-cover rounded-lg h-96 w-full" width="100%" height="100%" alt="{{$course->title}}" src="{{url('storage/'.$course->image->url)}}">
+                <img class="object-cover rounded-lg md:h-96 w-full" width="100%" height="100%" alt="{{$course->title}}" src="{{url('storage/'.$course->image->url)}}">
             </div>
             <div class="w-full lg:w-5/6 lg:max-w-lg md:w-1/2">
                 <div class="">
@@ -12,7 +12,7 @@
                     <p class="ml-8 mb-2 text-base leading-relaxed text-left text-blueGray-600"> <i class="fas fa-stream"></i> Categoria: {{$course->category->name}} </p>
                     <p class="ml-8 mb-2 text-base leading-relaxed text-left text-blueGray-600"> <i class="fas fa-users"></i> Matriculados: {{$course->students_count}} </p>
                     <p class="ml-8 mb-2 text-base leading-relaxed text-left text-blueGray-600"> <i class="fas fa-star"></i> Calificación: {{$course->rating}} </p>
-                    <p class="ml-8 mb-2 text-base leading-relaxed text-left text-blueGray-600"> <i class="fas fa-star"></i> Precio del curso: {{$course->price->value}} </p>
+                    <p class="ml-8 mb-2 text-base leading-relaxed text-left text-blueGray-600"> <i class="fas fa-dollar-sign"></i> Precio del curso: {{$course->price->value}} </p>
                 </div>
                 <div class="flex items-center ml-8 my-4">
                     <img class="h-12 w-12 object-cover rounded-full shadow-lg" src="{{$course->teacher->profile_photo_url}}" alt="{{$course->teacher->name}}">
