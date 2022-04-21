@@ -76,7 +76,7 @@
                             <!-- fin radio precios -->
                         </div>
                   </div>
-                  <div class="md:w-3/4 py-12 sm:px-auto items-center">
+                  <div class="md:w-3/4 py-12 px-4 items-center">
     
                       <div class="max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
                         {{ $courses->links() }}

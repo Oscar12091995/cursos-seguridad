@@ -2262,6 +2262,9 @@ select {
 .pl-8 {
   padding-left: 2rem;
 }
+.pl-12 {
+  padding-left: 3rem;
+}
 .text-left {
   text-align: left;
 }
@@ -3224,6 +3227,10 @@ select {
 
   .sm\:mr-2 {
     margin-right: 0.5rem;
+  }
+
+  .sm\:ml-12 {
+    margin-left: 3rem;
   }
 
   .sm\:block {
