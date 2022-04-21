@@ -93,6 +93,7 @@ class PaymentController extends Controller
         //y el usuario se suma al curso
         //podra ingresar al curso para llevarlo
         //y revisar su avance
+        //lleva su control
         
         
         $course->students()->attach(auth()->user()->id);

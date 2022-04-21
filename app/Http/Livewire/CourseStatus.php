@@ -16,7 +16,9 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class CourseStatus extends Component
 {
     use AuthorizesRequests;
-    
+
+    public $course, $current;
+
     public function render()
     {
         $quizzes = Quize::where('status', 'publicado')->where(
@@ -28,7 +30,7 @@ class CourseStatus extends Component
         return view('livewire.course-status', compact('quizzes','results'));
     }
 
-    public $course, $current;
+ 
 
     public function mount(Course $course){
         $this->course = $course;
