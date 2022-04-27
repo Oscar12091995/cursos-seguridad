@@ -22,7 +22,7 @@ class LessonResource extends Component
     }
     public function save(){
         $this->validate([
-            'file' => 'required|max:100000',
+            'file' => 'required',
         ]);
         $url = $this->file->store('resource');
 

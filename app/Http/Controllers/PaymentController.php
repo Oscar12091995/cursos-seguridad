@@ -88,7 +88,7 @@ class PaymentController extends Controller
         $result = $payment->execute($execution, $apiContext); */
         
         
-        //despues de pagar
+        //despues de pagar y proceder al curso
       
         
         $course->students()->attach(auth()->user()->id);
