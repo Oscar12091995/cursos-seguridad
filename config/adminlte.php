@@ -281,7 +281,12 @@ return [
             'icon' => 'fas fa-fw fa-dollar-sign',
             'icon_color' => 'yellow',
         ],
-        
+       /*  [
+            'text' => 'Cupones',
+            'route'  => 'admin.cupones.index',
+            'icon' => 'fas fa-fw fa-dollar-sign',
+            'icon_color' => 'yellow',
+        ], */
     ],
 
     /*

@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CuponController;
 use App\Http\Controllers\Admin\LevelController;
 use App\Http\Controllers\Admin\PriceController;
 
@@ -22,8 +23,9 @@ Route::resource('categories', CategoryController::class)->names('categories');
 Route::resource('levels', LevelController::class)->names('levels');
 
 Route::resource('prices', PriceController::class)->names('prices');
-
-
+/* 
+Route::resource('cupones', CuponController::class)->names('cupones');
+ */
 Route::get('courses', [CourseController::class, 'index'])->name('courses.index');
 Route::get('courses/{course}', [CourseController::class, 'show'])->name('courses.show');
 

@@ -6,6 +6,9 @@ use App\Http\Controllers\Instructor\CourseController;
 use App\Http\Livewire\Instructor\CoursesCurriculum;
 use App\Http\Livewire\Instructor\CoursesStudents;
 
+/* Route::get('/phpx', function(){
+    return phpinfo();
+}); */
 
 Route::redirect('', 'instructor/courses');
 
