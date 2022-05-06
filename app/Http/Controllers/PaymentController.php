@@ -91,6 +91,7 @@ class PaymentController extends Controller
         //despues de pagar y proceder al curso a inscribirse
         //traducciones al español
         //entrada al curso
+        //llevar curso
       
         
         $course->students()->attach(auth()->user()->id);
