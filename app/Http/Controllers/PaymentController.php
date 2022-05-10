@@ -92,7 +92,7 @@ class PaymentController extends Controller
         //traducciones al español
         //entrada al curso
         //llevar curso
-      
+        //registro    
         
         $course->students()->attach(auth()->user()->id);
         

@@ -5,7 +5,7 @@
             <div class="flex flex-col md:flex-row">
                   <div class="md:w-1/4 md:border-r-2 border-gray-700 p-4">
                         <div class="sticky inset-x-0 top-0 left-0 py-8 mr-2">
-                            <div class="text-3xl text-green-400 mb-8">Cursos de seguridad</div>
+                            <div class="text-3xl text-blue-900 mb-8">Cursos de seguridad</div>
                             <div class="text-xl text-gray-600">Buscar cursos </div>
                             <div class="relative text-gray-600 mt-4 lg:mr-16">
                                 @livewire('course-search')

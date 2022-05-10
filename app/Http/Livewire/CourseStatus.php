@@ -153,4 +153,7 @@ class CourseStatus extends Component
 
         return redirect()->route('quiz.detail',$quiz->slug)->withSuccess("Cuestionario completado. tu puntuación: ".$points);
     }
+
+   
 }
+

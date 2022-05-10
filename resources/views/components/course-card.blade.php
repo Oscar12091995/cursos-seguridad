@@ -13,7 +13,7 @@
                                 <div class="absolute transition mb-2 opacity-0 duration-500 ease-in-out transform group-hover:opacity-100 group-hover:translate-x-6 text-xl font-bold text-black group-hover:pr-2">{{$course->category->name}}</div>
                             </span>
                             <h3 class="text-2xl mt-8 font-bold text-black" data-unsp-sanitized="clean">{{Str::limit($course->title, 12)}}</h3>
-                            <div class="mb-0 text-lg text-gray-600">Inst: {{Str::limit($course->teacher->name, 12)}}</div>
+                            <div class="mb-0 text-lg text-gray-600">{{Str::limit($course->subtitle, 12)}}</div>
                         </div>
                         <div class="flex flex-row justify-between datos">
                             <div class="flex flex-col datos_col">

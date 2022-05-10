@@ -88,7 +88,7 @@
                     <div class="d-grid gap-2">
                         <a href="{{ route('quiz.join', $quiz->slug) }}" class="btn btn-info btn-sm px-4 py-3 w-10/12 text-center text-lg font-bold">Ver mis respuestas</a>
                     </div> 
-                    @elseif(!$quiz->finished_at)
+                    @elseif(!$quiz->point)
                     <div class="d-grid gap-2">
                         <a href="{{ route('quiz.join', $quiz->slug) }}" class="btn btn-primary btn-sm px-4 py-3 w-10/12 text-center text-lg font-bold">Unirse a la prueba</a>
                     </div>
@@ -97,7 +97,6 @@
                         <a href="{{ route('quiz.join', $quiz->slug) }}" class="btn btn-primary btn-sm px-4 py-3 w-10/12 text-center text-lg font-bold">Unirse a la prueba</a>
                     </div>
                     @endif
-
                 </div>
             </div>
             </p>
