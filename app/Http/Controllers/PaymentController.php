@@ -88,11 +88,7 @@ class PaymentController extends Controller
         $result = $payment->execute($execution, $apiContext); */
         
         
-        //despues de pagar y proceder al curso a inscribirse
-        //traducciones al español
-        //entrada al curso
-        //llevar curso
-        //registro    
+        //despues de pagar y proceder al curso a inscribirse    
         
         $course->students()->attach(auth()->user()->id);
         
