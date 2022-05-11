@@ -7,6 +7,24 @@
 
         {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
         <title>Cursos Seguridad Industrial Islander</title>
+        <!-- Primary Meta Tags -->
+        <meta name="title" content="Cursos Seguridad Industrial Islander">
+        <meta name="description" content="">
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://cursos.seguridadislander.com.mx/">
+        <meta property="og:title" content="Cursos Seguridad Industrial Islander">
+        <meta property="og:description" content="">
+        <meta property="og:image" content="{{ asset('images/LOGO.png') }}">
+
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://cursos.seguridadislander.com.mx/">
+        <meta property="twitter:title" content="Cursos Seguridad Industrial Islander">
+        <meta property="twitter:description" content="">
+        <meta property="twitter:image" content="">
+
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
