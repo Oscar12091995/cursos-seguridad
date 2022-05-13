@@ -3,18 +3,7 @@
 namespace App\Http\Controllers;
  
 use App\Models\Course;
-/* use PayPal\Api\Amount;
-use PayPal\Api\Payer; */
-/* use PayPal\Api\Payment as ApiPayment; */
-/* use PayPal\Api\PaymentExecution; */
-/* use PayPal\Api\RedirectUrls;
-use PayPal\Api\Transaction;
-use PayPal\Auth\OAuthTokenCredential;
-use PayPal\Exception\PayPalConnectionException;
-use PayPal\Rest\ApiContext; */
 use Illuminate\Http\Request;
-//use Illuminate\Support\Facades\Config;
-
 class PaymentController extends Controller
 {
 
@@ -88,7 +77,8 @@ class PaymentController extends Controller
         $result = $payment->execute($execution, $apiContext); */
         
         
-        //despues de pagar y proceder al curso a inscribirse    
+        //despues de pagar y proceder al curso a inscribirse  
+        //pasar  
         
         $course->students()->attach(auth()->user()->id);
         
