@@ -49,6 +49,7 @@
                     <div class="flex flex-col flex-1 justify-center mb-8">
                         <h1 class="mb-2 text-3xl font-black tracking-tighter text-black md:text-5xl title-font text-center">Iniciar Sesión</h1>
                         <div class="w-full mt-4">
+                            <x-jet-validation-errors class="mb-4" />
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
                                 <div class="flex flex-col mt-4">
