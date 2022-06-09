@@ -11,7 +11,7 @@
                         @auth
                         @else
                             @if (Route::has('register'))
-                                <a href="{{ route('register') }}" class="px-8 py-2 text-lg font-medium text-white transition-colors duration-300 transform bg-indigo-600 rounded hover:bg-indigo-500">Crear Cuenta</a>
+                                <a href="{{ route('register') }}" class="px-8 py-2 text-lg font-medium text-white transition-colors duration-300 transform bg-indigo-600 rounded hover:bg-indigo-500">¿Quieres comenzar ya?</a>
                             @endif
                         @endauth
                     
