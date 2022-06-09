@@ -7,6 +7,7 @@ use App\Models\Course;
 use App\Models\Category;
 use App\Models\Level;
 use App\Models\Price;
+use App\Services\Cart;
 use Livewire\WithPagination;
 
 
@@ -30,6 +31,8 @@ class CourseIndex extends Component
         ->price($this->price_id)
         ->latest('id')
         ->paginate(9);
+        $cart = new Cart;
+        $cart->clear();
         return view('livewire.course-index', compact('courses', 'categories', 'levels', 'prices'));
 
         

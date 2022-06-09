@@ -12,29 +12,80 @@
                     <p class="ml-8 mb-2 text-base leading-relaxed text-left text-blueGray-600"> <i class="fas fa-stream"></i> Categoria: {{$course->category->name}} </p>
                     <p class="ml-8 mb-2 text-base leading-relaxed text-left text-blueGray-600"> <i class="fas fa-users"></i> Matriculados: {{$course->students_count}} </p>
                     <p class="ml-8 mb-2 text-base leading-relaxed text-left text-blueGray-600"> <i class="fas fa-star"></i> Calificación: {{$course->rating}} </p>
-                    <p class="ml-8 mb-2 text-base leading-relaxed text-left text-blueGray-600"> <i class="fas fa-dollar-sign"></i> Precio del curso: {{$course->price->value}} </p>
+                   
                 </div>
                 <div class="flex items-center ml-8 my-4">
-                    <img class="h-12 w-12 object-cover rounded-full shadow-lg" src="{{$course->teacher->profile_photo_url}}" alt="{{$course->teacher->name}}">
-                    <div class="ml-4">
-                        <h4 class="font-bold text-gray-500 text-lg">Inst: {{$course->teacher->name}}</h4>
-                    </div>
+                    {{-- <img class="h-12 w-12 object-cover rounded-full shadow-lg" src="{{$course->teacher->profile_photo_url}}" alt="{{$course->teacher->name}}"> --}}
+             
+                        <h4 class="font-bold text-blueGray-600 text-lg">Precio del curso: <p class="text-5xl text-blue-600">${{$course->price->value}} MXN</p></h4>
+                    
                 </div>
-                <div class="flex flex-col items-center w-full gap-2 md:justify-center md:flex-row">
-                    @can('enrolled', $course)
-                       <a class="flex items-center px-10 py-5 mt-auto font-semibold text-xl text-white transition duration-500 ease-in-out transform bg-green-600 rounded-lg  hover:bg-green-700 focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2" href="{{route('courses.status', $course)}}">Continuar</a>
-                    @else
-                     @if ($course->price->value == 0)
-                        <form action="{{route('courses.enrolled', $course)}}" method="post">
+
+              {{--  @if ($course->price->value == 0)
+                    
+               @else
+                <div>
+                    <div  class="mt-2 flex ml-8 my-4">
+                        <label for="">                                    
+                            <input id="check" onchange="showContent()"  class=" form-checkbox h-5 w-5 text-blue-600" id="have-code" value="" type="checkbox" >
+                            Cuenta con un cupón de descuento?
+                        </label>  
+                    </div>
+                    <div class="mt-2 flex items-center justify-center mb-2" id="content" style="display: none;">           
+                        <form action="{{ route('apply_coupon') }}" method="POST" autocomplete="off">
                             @csrf
-                                <button class="flex items-center px-10 py-5 mt-auto font-semibold text-xl text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-lg  hover:bg-blue-700 focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2">
-                                Llevar curso
-                                </button>
-                        </form>
-                     @else
-                        <a class="flex items-center px-10 py-5 mt-auto font-semibold text-xl text-white transition duration-500 ease-in-out transform bg-red-600 rounded-lg  hover:bg-red-700 focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2" href="{{route('payment.checkout', $course)}}">Pagar curso</a>
-                     @endif
-                    @endcan
+                            <input class="rounded-l-lg p-2 border-t mr-0 mb-2 border-b border-l text-gray-800 border-gray-400 bg-white order-1" name="coupon" id="coupon" value="{{ session("coupon") }}" required placeholder="Escribe cupón"/>  
+                            <button type="submit" class="order-2 px-8 rounded-r-lg bg-blue-900 text-white font-bold p-2 uppercase border">Aplicar cupón</button>
+                        </form>     
+                    </div>  
+                </div>
+               @endif --}}
+               
+
+             {{--   @if (session('danger'))
+                <div class=" text-sm text-red-600 bg-red-200 border border-red-400 h-12 flex items-center p-4 rounded-sm relative" role="alert">
+                    <strong class="mr-1">{{session('danger')}}</strong>
+                    <button type="button" data-dismiss="alert" aria-label="Close" onclick="this.parentElement.remove();">
+                        <span class="absolute top-0 bottom-0 right-0 text-2xl px-3 py-1 hover:text-red-900" aria-hidden="true" >×</span>
+                    </button>
+                </div>
+               @endif
+               @if (session('success'))
+               <div class=" text-sm text-green-600 bg-green-200 border border-green-400 h-12 flex items-center p-4 rounded-sm relative" role="alert">
+                   <strong class="mr-1">{{session('success')}}</strong>
+                   <button type="button" data-dismiss="alert" aria-label="Close" onclick="this.parentElement.remove();">
+                       <span class="absolute top-0 bottom-0 right-0 text-2xl px-3 py-1 hover:text-green-900" aria-hidden="true" >×</span>
+                   </button>
+               </div>
+              @endif
+              @if (session('error'))
+              <div class=" text-sm text-red-600 bg-red-200 border border-red-400 h-12 flex items-center p-4 rounded-sm relative" role="alert">
+                  <strong class="mr-1">{{session('error')}}</strong>
+                  <button type="button" data-dismiss="alert" aria-label="Close" onclick="this.parentElement.remove();">
+                      <span class="absolute top-0 bottom-0 right-0 text-2xl px-3 py-1 hover:text-red-900" aria-hidden="true" >×</span>
+                  </button>
+              </div>
+             @endif --}}
+
+                <div class="flex flex-col w-full gap-2 md:flex-row ml-8 mt-2" id="cupon" >
+                    
+                 
+                        @can('enrolled', $course)
+                            <a class="flex items-center px-10 py-5 mt-auto font-semibold text-xl text-white transition duration-500 ease-in-out transform bg-green-600 rounded-lg  hover:bg-green-700 focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2" href="{{route('courses.status', $course)}}">Continuar</a>
+                        @else
+                            @if ($course->price->value == 0)
+                                <form action="{{route('courses.enrolled', $course)}}" method="post">
+                                    @csrf
+                                        <button class="flex items-center px-10 py-5 mt-auto font-semibold text-xl text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-lg  hover:bg-blue-700 focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2">
+                                        Llevar curso
+                                        </button>
+                                </form>
+                            @else
+                                <a class="flex items-center px-10 py-5 mt-auto font-semibold text-xl text-white transition duration-500 ease-in-out transform bg-red-600 rounded-lg  hover:bg-red-700 focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2" href="{{route('add_course_to_cart', $course)}}">Pagar curso</a>
+                                {{-- <a class="flex items-center px-10 py-5 mt-auto font-semibold text-xl text-white transition duration-500 ease-in-out transform bg-red-600 rounded-lg  hover:bg-red-700 focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2" href="{{route('payment.checkout', $course)}}">Pagar curso</a> --}}
+                            @endif
+                        @endcan
+                
                 </div>
             </div>
         </div>
@@ -127,4 +178,22 @@
         </div>
 
     </div>
+
+    <x-slot name="js">
+        <script>
+           function showContent() {
+                element = document.getElementById("content");
+                check = document.getElementById("check");
+                cupon = document.getElementById("cupon");
+                if (check.checked) {
+                    element.style.display='block';
+                    cupon.style.visibility="hidden";
+                }
+                else {
+                    element.style.display='none';
+                    cupon.style.visibility="visible";
+                }
+            }           
+        </script>
+    </x-slot>
 </x-app-layout>

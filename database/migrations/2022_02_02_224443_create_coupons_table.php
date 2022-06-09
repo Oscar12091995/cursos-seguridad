@@ -16,18 +16,16 @@ class CreateCouponsTable extends Migration
     {
         Schema::create('coupons', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('code');
             $table->string('description');
-            $table->enum('discount_type', [Coupon::PORCENTAJE, Coupon::PRECIO]);
+            $table->enum('discount_type', [Coupon::PERCENT, Coupon::PRICE])->default(Coupon::PRICE);
             $table->tinyInteger('discount');
             $table->boolean('enabled');
             $table->date("expires_at")->nullable();
-
-            $table->unsignedBigInteger('user_id');
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

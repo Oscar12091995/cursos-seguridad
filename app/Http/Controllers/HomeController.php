@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Course;
+use App\Services\Cart;
 use App\Models\Price;
 
 
@@ -18,7 +19,9 @@ class HomeController extends Controller
         ->get()
         ->take(5);
        /*  return $courses; */
-
+        $cart = new Cart;
+        $cart->clear();
         return view('welcome', compact('courses'));
+
     }
 }

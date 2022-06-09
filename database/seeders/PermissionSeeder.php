@@ -119,6 +119,19 @@ class PermissionSeeder extends Seeder
         Permission::create([
             'name' => 'Eliminar precios',
         ]);
+        //cupones
+        Permission::create([
+            'name' => 'Leer Cupones',
+        ]);
+        Permission::create([
+            'name' => 'Crear Cupones',
+        ]);
+        Permission::create([
+            'name' => 'Editar Cupones',
+        ]);
+        Permission::create([
+            'name' => 'Eliminar Cupones',
+        ]);
     
     }
 }

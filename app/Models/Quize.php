@@ -63,15 +63,7 @@ class Quize extends Model
     public function getFinishedAtAttribute($date){
         return $date ? Carbon::parse($date) : null;
     }
-
-    /* public function sluggable(): array
-    {
-        return [
-            'slug' => [
-                'onUpdate' => true,
-                'source' => 'title'
-            ]
-        ];
-    } */
    
 }
+
+

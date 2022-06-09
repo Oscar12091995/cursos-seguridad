@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Coupon;
 use App\Models\Course;
-
+use Illuminate\Http\Request;
+use JeroenNoten\LaravelAdminLte\View\Components\Form\Input;
 use Livewire\WithPagination;
 
 class CourseController extends Controller
@@ -39,4 +41,38 @@ class CourseController extends Controller
         
         return redirect()->route('courses.status', $course);
     }
+
+    public function applyCoupon(Course $course){
+        session()->remove("coupon");
+        session()->save();
+
+        $code = request("coupon");
+        $coupon = Coupon::available($code)->first();
+        if (!$coupon) {
+            return back()->with('danger', 'El cupón que has introducido no existe');
+        }
+
+        $totalCourses = $coupon->courses()->where("id");
+
+        if ($totalCourses) {
+            session()->put("coupon", $code);
+            session()->save();
+            
+            return back()->with('success','El cupón se ha aplicado correctamente');
+            
+                        
+        }
+        return back()->with('error', 'El cupón no se puede aplicar');
+
+        
+
+    }
+
+    protected function removeCoupon():void {
+        session()->remove("coupon");
+        session()->save();
+    }
+
+    
+
 }

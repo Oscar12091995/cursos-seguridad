@@ -12,6 +12,8 @@ class CoursesIndex extends Component
 
     public $search;
 
+    protected $listeners = ['delete'];
+
     public function render()
     {
         $courses = Course::where('title', 'like', '%' . $this->search . '%')
@@ -23,5 +25,11 @@ class CoursesIndex extends Component
     }
     public function limpiar_page(){
         $this->reset('page');
+    }
+
+    
+
+    public function delete(Course $course){
+        $course->delete();
     }
 }

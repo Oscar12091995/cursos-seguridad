@@ -1,12 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
- 
+
+use App\Models\Coupon;
 use App\Models\Course;
+use App\Services\Cart;
 use Illuminate\Http\Request;
 class PaymentController extends Controller
 {
 
+    
 
     public function checkout(Course $course) {
         return view('payment.checkout', compact('course'));
@@ -21,7 +24,12 @@ class PaymentController extends Controller
             )
         );
 
-        
+        $cart = new Cart;
+        if (!$cart->hasProducts()) {
+            return back()->with("message", ["danger", __("No hay productos para procesar")]);
+        }
+
+       
  
         // After Step 2
         $payer = new \PayPal\Api\Payer();
@@ -51,14 +59,50 @@ class PaymentController extends Controller
         // After Step 3
         try {
             $payment->create($apiContext);
- 
+            
             return redirect()->away($payment->getApprovalLink());
+            $cart->clear();
  
         } catch (\PayPal\Exception\PayPalConnectionException $ex) {
 
             echo $ex->getData();
             
         }
+    }
+
+    public function applyCoupon(Course $course){
+        session()->remove("coupon");
+        session()->save();
+
+        $amount = $course->price->value;
+        $code = request("coupon");
+        $coupon = Coupon::available($code)->first();
+        if (!$coupon) {
+            return back()->with('danger', 'El cupón que has introducido no existe');
+        }
+
+        $totalCourses = $coupon->courses()->where("id");
+
+        if ($totalCourses) {
+            session()->put("coupon", $code);
+            session()->save();
+
+            if ($coupon->discount_type === Coupon::PERCENT) {
+                $discount = $course->price->value * ($coupon->discount / 100) ;
+                $withDiscount = $discount;
+            }
+            if ($coupon->discount_type === Coupon::PRICE) {
+                $withDiscount = $amount - $coupon->discount;
+            }
+            
+            return back()->with('success','El cupón se ha aplicado correctamente', compact('withDiscount'));
+            
+                        
+        }
+        return back()->with('error', 'El cupón no se puede aplicar');
+
+        
+
     }
 
 
@@ -84,6 +128,8 @@ class PaymentController extends Controller
         
         return redirect()->route('courses.status', $course);
     }
+
+    
 
 
 

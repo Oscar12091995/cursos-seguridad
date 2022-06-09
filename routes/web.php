@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Livewire\CourseStatus;
-
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\Admin\QuizController;
 use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Livewire\CourseIndex;
@@ -26,7 +26,14 @@ Route::get('mis-cursos/', IndexShow::class)->middleware('auth')->name('courses.i
 
 Route::post('courses/{course}/enrolled', [CourseController::class, 'enrolled'])->middleware('auth')->name('courses.enrolled');
 
+Route::post('/apply-coupon', [CourseController::class, 'applyCoupon'])->name('apply_coupon');
+
 Route::get('course-status/{course}', CourseStatus::class)->name('courses.status')->middleware('auth');
+
+//sección de rutas para el carrito
+Route::get('add-course-to-cart/{course}', [StudentController::class ,'addCourseToCart'])->middleware('auth')->name('add_course_to_cart');
+Route::get('cart', [StudentController::class, 'showCart'])->middleware('auth')->name('cart');
+Route::get('remove-course-from-cart/{course}', [StudentController:: class, 'removeCourseFromCart'])->middleware('auth')->name('remove_course_from_cart');
 
 
 Route::group(['middleware' => 'auth'], function(){

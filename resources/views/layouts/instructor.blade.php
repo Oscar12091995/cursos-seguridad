@@ -18,9 +18,9 @@
       <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
         <link rel="stylesheet" href="{{asset('vendor/fontawesome-free/css/all.min.css')}}">
-
         @livewireStyles
         
+        @stack('css')
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
@@ -116,13 +116,15 @@
         </div>
 
         @stack('modals')
-        
-
+       
         @livewireScripts
+
+        @stack('script')
 
         @isset($js)
             {{$js}}
         @endisset
+       
 
        
     </body>

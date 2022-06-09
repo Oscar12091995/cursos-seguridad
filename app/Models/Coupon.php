@@ -2,17 +2,18 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes as EloquentSoftDeletes;
+use Ulluminate\Database\Eloquent\SoftDeletes;
 
 class Coupon extends Model
 {
-    use HasFactory;
+    use HasFactory, EloquentSoftDeletes;
 
-    protected $guarded = ['id'];
-
-    const PORCENTAJE = 'PERCENT';
-    const PRECIO = 'PRICE';
+    const PERCENT = 'PERCENT';
+    const PRICE = 'PRICE';
 
     protected $fillable = [
         'user_id', 'code', 'discount_type',
@@ -23,6 +24,12 @@ class Coupon extends Model
         "expires_at"
     ];
 
+    protected $date = ["expires_at"];
+
+    public static function findByCode($coupon){
+        return self::where('codigo', $coupon)->first();
+    }
+
     protected static function boot() {
         parent::boot();
         if (!app()->runningInConsole()) {
@@ -32,14 +39,31 @@ class Coupon extends Model
         }
     }
 
-    public function courses() {
-        return $this->belongsToMany(Course::class);
+   
+
+    public function courses(){
+        return $this->belongsToMany('App\Models\Course');
+    }
+
+    public function scopeForTeacher(Builder $builder) {
+        return $builder
+            ->where("user_id", auth()->id())
+            ->paginate();
+    }
+
+    public function scopeAvailable(Builder $builder, string $code) {
+        return $builder
+            ->where('enabled', true)
+            ->where('code', $code)
+            ->where('expires_at', '>=', now())
+            ->orWhereNull('expires_at');
     }
 
     public static function discountTypes() {
         return [
-            self::PORCENTAJE => __("Porcentaje"),
-            self::PRECIO => __("Fijo"),
+            self::PERCENT => __("Porcentaje"),
+            self::PRICE => __("Fijo"),
         ];
     }
+    
 }

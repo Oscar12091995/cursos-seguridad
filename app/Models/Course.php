@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+
+use function GuzzleHttp\Promise\all;
 
 class Course extends Model
 {
@@ -24,6 +27,12 @@ class Course extends Model
             return 5;
         }
         
+    }
+
+    public function scopeForTeacher(Builder $builder) {
+        return $builder
+            ->withCount('students')
+            ->paginate();
     }
 
     public function getRouteKeyName()
@@ -68,6 +77,10 @@ class Course extends Model
     //Relación uno a muchos inversa level
     public function level(){
         return $this->belongsTo('App\Models\Level');
+    }
+
+    public function coupons(){
+        return $this->belongsToMany('App\Models\Coupon');
     }
     
     //Relación uno a muchos inversa precios
