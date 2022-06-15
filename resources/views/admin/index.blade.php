@@ -3,48 +3,51 @@
 @section('title', 'Administración')
 
 @section('content_header')
-    <h1>Administracion</h1>
+    <h1>Administración</h1>
 @stop
 
 
 @section('content')
-<div class="row">
-          
+<div class="row">        
     <div class="col-lg-3 col-6">
-        <div class="small-box bg-light">
+        <div class="small-box bg-red">
             <div class="inner">
                 <h3>{{ $users_count }}</h3>
                 <p>Usuarios Registrados</p>
             </div>
             <div class="icon">
-                <i class="fas fa-user text-dark"></i>
+                <i class="fas fa-user text-light"></i>
             </div>
+            <a href="{{route('admin.users.index')}}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <div class="col-lg-3 col-6">
-        <div class="small-box bg-light">
+        <div class="small-box bg-success">
             <div class="inner">
                 <h3>{{ $courses_count}}</h3>
                 <p>Cursos Totales</p>
             </div>
             <div class="icon">
-                <i class="fas fa-laptop text-dark"></i>
+                <i class="fas fa-laptop text-light"></i>
             </div>
+            <a href="{{route('admin.courses-list.index')}}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+
         </div>
     </div>
     <div class="col-lg-3 col-6">
-        <div class="small-box bg-light">
+        <div class="small-box bg-primary">
             <div class="inner">
                 <h3>{{ $coursespend_count }}</h3>
                 <p>Cursos por aprobar</p>
             </div>
             <div class="icon text-blue-700">
-                <i class="fas fa-check text-dark"></i>
+                <i class="fas fa-check text-light"></i>
             </div>
+            <a href="{{route('admin.courses.index')}}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <div class="col-lg-3 col-6">
-        <div class="small-box bg-light">
+        <div class="small-box bg-warning">
             <div class="inner">
                 <h3>{{ $exams_count }}</h3>
                 <p>Exámenes totales</p>
@@ -52,10 +55,50 @@
             <div class="icon text-blue-700">
                 <i class="fas fa-award text-dark"></i>
             </div>
+            <a href="{{route('quizzes.index')}}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
+</div>
+
+<h2>Información instructores</h2>
+   
+<div class="row">
+    @foreach ($teachers_count as $teacher)
+        <div class="col-md-4">
+            <div class="card card-widget widget-user-2">
     
-  </div>
+                <div class="widget-user-header bg-purple">
+                    <div class="widget-user-image">
+                        <img class="img-circle elevation-2" src="{{$teacher->profile_photo_url}}" alt="User Avatar">
+                    </div>
+                
+                    <h3 class="widget-user-username font-bold">{{$teacher->name}}</h3>
+                    <h5 class="widget-user-desc">{{$teacher->apellidos}}</h5>
+                </div>
+                <div class="card-footer p-0">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark">
+                            Número de telefono <span class="float-right badge bg-primary">{{$teacher->telefono}}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark">
+                            Correo <span class="float-right badge bg-danger">{{$teacher->email}}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark">
+                            Cursos totales <span class="float-right badge bg-success">{{$teacher->courses_dictated()->count()}}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    @endforeach
+</div>
+   
   {{-- <canvas id="myChart" width="400" height="100"></canvas> --}}
 @stop
 

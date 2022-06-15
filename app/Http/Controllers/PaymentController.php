@@ -88,8 +88,8 @@ class PaymentController extends Controller
             session()->save();
 
             if ($coupon->discount_type === Coupon::PERCENT) {
-                $discount = $course->price->value * ($coupon->discount / 100) ;
-                $withDiscount = $discount;
+                $discount = ($course->price->value * $coupon->discount) / 100;
+                $withDiscount = $amount - $discount;
             }
             if ($coupon->discount_type === Coupon::PRICE) {
                 $withDiscount = $amount - $coupon->discount;

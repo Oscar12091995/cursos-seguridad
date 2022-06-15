@@ -114,7 +114,7 @@
                 <div class="flex justify-end font-bold space-x-4 text-2xl border-t border-gray-100 px-5 py-4">
                     <hr>
                     <div class="text-blue-600">  
-                      {{--   @if(session()->has("coupon"))
+                        @if(session()->has("coupon"))
                         <tr>
                             <td colspan="2">&nbsp;</td>
                             <td>
@@ -123,7 +123,7 @@
                                 </div>
                             </td>
                         </tr>
-                        @endif --}}
+                        @endif
                     </div>
                 </div>
                 <div class="flex justify-end px-2 space-x-4 w-full">
@@ -153,25 +153,25 @@
                     @endif
                 </div>
                
-                <div class="flex justify-end p-4">          
+                <div class="flex justify-end p-4 sm:items-center sm:justify-center">          
                     <!-- send this data to backend (note: use class 'hidden' to hide this input) -->
                     <form class="intro-newslatter" action="{{ route('apply_coupon') }}" method="POST">
                         @csrf
-                        <input class="w-64 order-1" type="text" name="coupon" placeholder="{{ __("¿Tienes un cupón de descuento?") }}" required value="{{ session("coupon") }}"/>
+                        <input class="sm:w-40 md:w-80 order-1" type="text" name="coupon" placeholder="{{ __("¿Tienes un cupón de descuento?") }}" required value="{{ session("coupon") }}"/>
                         <button type="submit" class="order-2 py-2 px-2 md:mt-auto font-semibold text-xl text-white transition duration-500 ease-in-out transform bg-red-600 rounded-lg  hover:bg-red-700 focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2">
                             {{ __("Canjear") }}
                         </button>
                     </form>
                 </div>
                
-                <div class="flex justify-center items-center">
+                <div class="flex justify-end items-center">
                     @if($cart->hasProducts() === 1)
-                        <div class="row">
+                        
                             <div class="col-12 mb-5">
                                @if ($cart->totalAmountWithDiscount() == 0)
                                <form action="{{route('courses.enrolled', $course)}}" method="post">
                                 @csrf
-                                    <button class="border border-indigo-500 bg-indigo-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline">
+                                    <button class="border border-blue-500 bg-blue-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-blue-600 focus:outline-none focus:shadow-outline">
                                     Llevar curso
                                     </button>
                                 </form>
@@ -179,7 +179,7 @@
                                 <a href="{{ route('payment.checkout', $course) }}" class="border border-indigo-500 bg-indigo-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline">{{ __("Proceder a pagar") }}</a>
                                @endif
                             </div>
-                        </div>
+                       
                     @else
                         <div class="px-6 text- py-6 text-gray-600 uppercase">No es posible proceder al pago Colocaste el mismo Curso debes de Eliminar y proceder a pagar el curso </div>
                     @endif
@@ -263,6 +263,8 @@
             </div>
         @endif
     </div> --}}
-
+{{-- AGREGAR TARJETAS DE LOS INSTRUCTORES MERAMENTE INFORMATIVA
+     AGREGAR DIAPOSITIVAS DE OBJETIVOS Y TEMARIO EN LAS PRESENTACIONES
+    --}}
     
 </x-app-layout>

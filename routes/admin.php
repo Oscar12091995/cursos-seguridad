@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CouponController;
+use App\Http\Controllers\Admin\CourseListController;
 use App\Http\Controllers\Admin\CuponController;
 use App\Http\Controllers\Admin\LevelController;
 use App\Http\Controllers\Admin\PriceController;
@@ -26,6 +27,8 @@ Route::resource('levels', LevelController::class)->names('levels');
 Route::resource('prices', PriceController::class)->names('prices');
 
 Route::resource('coupons', CouponController::class)->names('cupones');
+
+Route::resource('courses-list', CourseListController::class)->names('courses-list');
 
 
 Route::get('courses', [CourseController::class, 'index'])->name('courses.index');

@@ -157,7 +157,8 @@ class Cart {
                 // check discount type and apply
                 if ($coupon->discount_type === Coupon::PERCENT) {
                    /*  $discount =  ($coupon->discount / 100); */
-                    $withDiscount = $amount  * ($coupon->discount / 100);
+                    $value = ($amount  * $coupon->discount) / 100;
+                    $withDiscount = $amount - $value;
                    /*  $discount = $course->price->value * ($coupon->discount / 100) ;
                     $withDiscount = $discount; */
                 }
@@ -166,7 +167,7 @@ class Cart {
                 }
             } else {
                 $this->removeCoupon();
-                return $amount;
+               /*  return $amount; */
             }
         }
         /* if ($formatted) {

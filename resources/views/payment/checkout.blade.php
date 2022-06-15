@@ -2,7 +2,7 @@
 
     @inject('cart', 'App\Services\Cart')
     
-    <div class="min-w-screen min-h-screen bg-gray-50 py-5 px-24">
+    <div class="min-w-screen min-h-screen bg-gray-50 py-5 md:px-24 px-2">
       
         <div class="w-full bg-white border-t border-b border-gray-200 px-5 py-10 text-gray-800">
             <div class="w-full">

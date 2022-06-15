@@ -258,6 +258,12 @@ return [
         ],
         ['header' => 'Opciones de cursos'],
         [
+            'text'        => 'Cursos',
+            'route'         => 'admin.courses-list.index',
+            'icon'        => 'fas fa-fw fa-certificate',
+            'icon_color' => 'lime',
+        ],
+        [
             'text' => 'Pendientes de aprobación',
             'route'  => 'admin.courses.index',
             'icon_color' => 'red',

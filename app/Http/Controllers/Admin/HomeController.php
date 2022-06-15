@@ -23,8 +23,9 @@ class HomeController extends Controller
         $coursesCont = Course::count();
         $coursespend = Course::all()->where('status', 2)->count();
         $examscont = Quize::count();
-        /* $teachersCont = User::has('courses_dictated')->count(); */
-        return view('admin.index', ['users_count' => $usersCont, 'courses_count' => $coursesCont, 'coursespend_count' => $coursespend, 'exams_count' => $examscont]);
+        $teachersCont = User::has('courses_dictated')->get();
+        /* $teachersCont = User::all(); */
+        return view('admin.index', ['users_count' => $usersCont, 'courses_count' => $coursesCont, 'coursespend_count' => $coursespend, 'exams_count' => $examscont, 'teachers_count' => $teachersCont]);
     }
     
 }
