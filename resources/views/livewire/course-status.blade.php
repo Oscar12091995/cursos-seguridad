@@ -1,18 +1,6 @@
 <div class="max-w-7xl mx-auto px-4 sm:px-6  lg:px-8 py-8">
     <div class="container grid grid-cols-1 lg:grid-cols-3 gap-8">
-        @if ($current == null)
-            <div class="bg-gray-100 flex justify-center items-center lg:col-span-6">
-                <div class="bg-gray-100 flex justify-center items-center">
-                    <div class="w-80 rounded-md cursor-pointer shadow-lg overflow-hidden hover:shadow-xl transform hover:scale-105 duration-500">
-                      <img src="{{asset('images/404-error-3060993_1280.png')}}" alt="Error" />
-                      <div class="p-4 bg-white">
-                        <span class="text-sm font-semibold text-red-50 bg-red-400 py-1 px-3 rounded-full items-center">Atención!</span>
-                        <h1 class="mt-4 font-bold text-xl">Curso en Mantenimiento</h1>
-                      </div>
-                    </div>
-                  </div>
-            </div>
-            @else
+      
         <div class="lg:col-span-2">
             <div class="embed-responsive">
                 {!!$current->iframe!!}
@@ -40,14 +28,14 @@
                     @if ($current->resource)
                     <div wire:click="download" class="mt-4 md:mt-0">
                         <div class="each flex hover:shadow-lg select-none p-10 rounded-md border-gray-300 border mb-3 hover:border-gray-500 cursor-pointer px-2 py-2">
-                            <div class="left">
-                                <div class="header text-blue-600 font-semibold text-xl">Descargar <i class="fas fa-download text-base"></i></div>
-                                <div class="desc text-gray-600 text-sm">Aquí puedes encontrar recursos que puedas necesitar!</div>
+                                <div class="left">
+                                    <div class="header text-blue-600 font-semibold text-xl">Descargar <i class="fas fa-download text-base"></i></div>
+                                    <div class="desc text-gray-600 text-sm">Aquí puedes encontrar recursos que puedas necesitar!</div>
+                                </div>
                             </div>
                         </div>
+                    @endif
                     </div>
-                </div>
-                @endif
             </div>
 
             <div class=" mt-2 font-bold">
@@ -65,8 +53,8 @@
             
         </div>
        
-        <div class="bg-white shadow-lg rounded h-screen overflow-hidden">
-            <div class="px-6 py-4 text-gray-500 h-screen scrolls" style = "">
+        <div class="bg-white shadow-lg rounded">
+            <div class="px-6 py-4 text-gray-500 overflow-y-scroll" style="overflow-y: scroll; height: 600px;">
                 <h1 class="text-xl text-black font-bold leading-8 text-center mb-4">{{$course->title}}</h1>
                 <div class="flex items-center">
                     <figure>
@@ -139,6 +127,7 @@
                 </ul>
             </div>
         </div>
-        @endif
+      
     </div>
 </div>
+
