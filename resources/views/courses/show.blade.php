@@ -3,7 +3,7 @@
     <section class="mx-12 my-14">
         <div class="max-w-7xl flex flex-col items-center px-5 mx-auto  md:flex-row lg:px-28">
             <div class="flex flex-col items-start w-full pt-0 mb-16 text-left md:mr-8 md:w-1/2 md:mb-0">
-                <img class="object-cover rounded-lg md:h-96 w-full" width="100%" height="100%" alt="{{$course->title}}" src="{{url('storage/'.$course->image->url)}}">
+                <img class="object-cover rounded-lg md:h-96 w-full" width="100%" height="100%" alt="{{$course->title}}" src="{{Storage::url($course->image->url)}}">
             </div>
             <div class="w-full lg:w-5/6 lg:max-w-lg md:w-1/2">
                 <div class="">

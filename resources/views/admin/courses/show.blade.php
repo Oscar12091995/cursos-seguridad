@@ -7,7 +7,7 @@
             <div class="flex flex-col items-start w-full pt-0 mb-16 text-left md:mr-8 md:w-1/2 md:mb-0">
                 {{-- <img class="object-cover object-center rounded-lg" width="100%" height="100%" src="{{url('storage/'.$course->image->url)}}"> --}}
                 @if ($course->image)
-                <img class="h-60 w-full object-cover" src="{{url('storage/'.$course->image->url)}}" width="100%" height="100%" alt="alt="{{$course->title}}"">
+                <img class="h-60 w-full object-cover" src="{{Storage::url($course->image->url)}}" width="100%" height="100%" alt="alt="{{$course->title}}"">
                 @else
                 <img class="w-full h-64 object-center object-cover shadow-md" id="picture" src="https://images.pexels.com/photos/260367/pexels-photo-260367.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
                 @endif

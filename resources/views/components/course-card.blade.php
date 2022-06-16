@@ -45,7 +45,8 @@
                     
                 </div>
             </div>
-            <img class="absolute inset-0 transform w-full -translate-y-4 h-44 object-cover" src="{{url('storage/'.$course->image->url)}}" alt="{{$course->title}}" style="filter: grayscale(0);" />
+            {{-- {{Storage::url($course->image->url)}} --}}
+            <img class="absolute inset-0 transform w-full -translate-y-4 h-44 object-cover" src="{{Storage::url($course->image->url)}}" alt="{{$course->title}}" style="filter: grayscale(0);" />
             <div class="flex flex-row relative pb-10 space-x-4 z-10 mt-8">
                     <a class="flex items-center py-2 px-4 rounded-full mx-auto text-white bg-red-500 hover:bg-red-700" href="{{route('courses.show', $course)}}">
                         <div class="text-sm text-white ml-2">Inscribirse</div>
