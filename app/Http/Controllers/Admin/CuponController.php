@@ -9,16 +9,29 @@ use App\Models\Course;
 use App\Traits\Teacher\ManageCoupons;
 use Illuminate\Http\Request;
 
+use Illuminate\Validation\Rule;
+
 
 class CuponController extends Controller
 {
 
     use ManageCoupons;
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('can:Leer Cupones')->only('index');
+        $this->middleware('can:Crear Cupones')->only('create', 'store');
+        $this->middleware('can:Editar Cupones')->only('edit', 'update');
+        $this->middleware('can:Eliminar Cupones')->only('destroy');
+        
+    } 
+
     public function index()
     {
         $coupons = Coupon::all();
@@ -48,7 +61,7 @@ class CuponController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CouponRequest $request)
+    public function store(CouponRequest $request, Coupon $coupon)
     {
         
      /* $request->validate([
@@ -76,6 +89,20 @@ class CuponController extends Controller
             session()->flash("message", ["danger", $exception->getMessage()]);
             return back();
         } */
+
+        try {
+            \DB::beginTransaction();
+            $input = $this->couponInput();
+            $coupon = Coupon::create($input);
+            $coupon->courses()->sync(request("courses"), false);
+            \DB::commit();
+         /*    session()->flash("message", ["success", __("Cupón creado satisfactoriamente")]); */
+            return redirect(route('admin.cupones.index', ['coupon' => $coupon]))->with('crear', 'Cupón creado satisfactoriamente');
+        } catch (\Throwable $exception) {
+            \DB::rollBack();
+            session()->flash("message", ["danger", $exception->getMessage()]);
+            return back();
+        }
         
     }
 
@@ -100,6 +127,12 @@ class CuponController extends Controller
     {
     /*     $courses = Course::all();
         return view('admin.cupones.edit', compact('coupon', 'courses')); */
+        $coupon->load("courses");
+        $title = __("Editar el cupón :coupon", ["coupon" => $coupon->code]);
+        $textButton = __("Actualizar cupón");
+        $options = ['route' => ['admin.cupones.update', ["coupon" => $coupon]]];
+        $update = true;
+        return view('admin.cupones.edit', compact('title', 'coupon', 'options', 'textButton', 'update'));
     }
 
     /**
@@ -120,6 +153,19 @@ class CuponController extends Controller
         $coupon->update($request->all());
     
         return redirect()->route('admin.cupones.index', $coupon)->with('editar', 'El cupón se actualizo con exito'); */
+        try {
+            \DB::beginTransaction();
+            $input = $this->couponInput();
+            $coupon->fill($input)->save();
+            $coupon->courses()->sync(request("courses"));
+            \DB::commit();
+           /*  session()->flash("message", ["success", __("Cupón actualizado satisfactoriamente")]); */
+            return redirect(route('admin.cupones.index', ['coupon' => $coupon]))->with('editar','Cupón actualizado satisfactoriamente');
+        } catch (\Throwable $exception) {
+            \DB::rollBack();
+            session()->flash("message", ["danger", $exception->getMessage()]);
+            return back();
+        }
     }
 
     /**
@@ -132,5 +178,13 @@ class CuponController extends Controller
     {
       /*   $coupon->delete();
         return redirect()->route('admin.cupones.index', $coupon)->with('eliminar', 'Precio eliminado con exito!'); */
+        $coupon->delete();
+        return redirect()->route('admin.cupones.index', $coupon)->with('eliminar', 'Cupón eliminado con exito!');
     }
+
+    protected function couponInput(): array {
+        return request()->only(
+            "code", "description", "discount_type", "discount", "enabled", "expires_at"
+        );
+    } 
 }
