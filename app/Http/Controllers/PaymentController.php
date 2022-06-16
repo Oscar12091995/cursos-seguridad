@@ -120,10 +120,6 @@ class PaymentController extends Controller
         $execution->setPayerId($_GET['PayerID']);
         $result = $payment->execute($execution, $apiContext); */
         
-        
-        //despues de pagar y proceder al curso a inscribirse  
-        //pasar  
-        
         $course->students()->attach(auth()->user()->id);
         
         return redirect()->route('courses.status', $course);

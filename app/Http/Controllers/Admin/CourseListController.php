@@ -13,6 +13,11 @@ class CourseListController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('can:Lista cursos')->only('index');        
+    }
+
     public function index()
     {
         $courses = Course::all();
